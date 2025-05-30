@@ -1,0 +1,1 @@
+Added because git does not track empty folders by default and without this components folder will not be pushed to remote repo
