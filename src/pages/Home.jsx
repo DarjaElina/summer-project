@@ -1,19 +1,16 @@
-
-import { NavLink, Link } from "react-router";
-import React from 'react'
+import { NavLink, Link, Outlet } from "react-router";
+import React from "react";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   return (
-    <div>Home
-         <nav>
-        <ul>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/calander">Calander</NavLink>
-          <NavLink to="/login">Log In</NavLink>
-        </ul>
-      </nav>
-    </div>
-  )
-}
+    <>
+      <Header></Header>
+      <Outlet />
+      <Footer></Footer>
+    </>
+  );
+};
 
 export default Home;

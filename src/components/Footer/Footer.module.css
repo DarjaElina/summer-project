@@ -1,0 +1,17 @@
+.footer {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--primary-background-color);
+}
+.footer h1 {
+  color: var(--text-color);
+}
+.footer p {
+  color: var(--muted-color);
+  cursor: pointer;
+}

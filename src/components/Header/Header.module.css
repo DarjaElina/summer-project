@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  background-color: var(--primary-background-color);
+}
+.header h2 {
+  color: green;
+}
+.h2 span {
+  color: blue;
+}
+.header ul li {
+  display: inline-block;
+}
+.a {
+  text-decoration: none;
+  color: green;
+  margin: 0 10px;
+  font-size: 1.4rem;
+}
+.a:hover {
+  color: var(--button-hover-bg);
+}
