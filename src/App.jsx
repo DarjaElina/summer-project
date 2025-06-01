@@ -9,6 +9,7 @@ import CalendarPage from "./pages/CalendarPage";
 import MapPage from "./pages/MapPage";
 import CreateEvent from "./pages/CreateEvent";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import './App.css';
 
 const router = createBrowserRouter([
   {
