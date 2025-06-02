@@ -1,0 +1,16 @@
+div.events-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  justify-items: center;
+  margin: 40px 0;
+}
+div.event-card {
+  max-width: 200px;
+}
+@media (max-width: 1100px) {
+  .events-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

@@ -1,1 +1,93 @@
-{}
+{
+    "users": [
+      { "id": 1, "username": "alex_dev", "password": "pass1234" },
+      { "id": 2, "username": "sara99", "password": "helloWorld1" },
+      { "id": 3, "username": "event_admin", "password": "admin2025" },
+      { "id": 4, "username": "john_doe", "password": "qwertyui" },
+      { "id": 5, "username": "emily.tech", "password": "securePass!" },
+      { "id": 6, "username": "leo_builder", "password": "builder321" },
+      { "id": 7, "username": "nina.art", "password": "paintLove7" },
+      { "id": 8, "username": "admin_user", "password": "rootAccess!" },
+      { "id": 9, "username": "ravi_coder", "password": "ilovecoding" },
+      { "id": 10, "username": "hana_mod", "password": "modpass09" }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "title": "Live Music at Oodi",
+        "description": "Enjoy an evening of local live bands.",
+        "location": "Töölönlahdenkatu 4, 00100 Helsinki",
+        "date": "2025-06-10T18:00:00",
+        "lat": 60.1746,
+        "lng": 24.9384,
+        "emoji": "🎶",
+        "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 2,
+        "title": "Espoo Tech Meetup",
+        "description": "A casual networking event for tech lovers.",
+        "location": "Keilalahdentie 2, 02150 Espoo",
+        "date": "2025-06-15T17:00:00",
+        "lat": 60.1716,
+        "lng": 24.8287,
+        "emoji": "💻",
+        "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 3,
+        "title": "Vegan Food Fair",
+        "description": "Taste the best vegan dishes from around Finland.",
+        "location": "Kauppatori, 00170 Helsinki",
+        "date": "2025-06-20T11:00:00",
+        "lat": 60.1675,
+        "lng": 24.9523,
+        "emoji": "🥦",
+        "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 4,
+        "title": "Community Cleanup",
+        "description": "Join us to clean up Länsi-Vantaa park area.",
+        "location": "Martinlaaksontie 36, 01620 Vantaa",
+        "date": "2025-06-12T10:00:00",
+        "lat": 60.2843,
+        "lng": 24.8568,
+        "emoji": "🧹",
+        "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 5,
+        "title": "Coding Bootcamp Intro",
+        "description": "Learn the basics of web development in a day!",
+        "location": "Otakaari 1, 02150 Espoo",
+        "date": "2025-06-18T09:00:00",
+        "lat": 60.1860,
+        "lng": 24.8212,
+        "emoji": "📚",
+        "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 6,
+        "title": "Yoga in the Park",
+        "description": "Morning yoga session in Kaivopuisto 🌳",
+        "location": "Ehrenströmintie 1, 00140 Helsinki",
+        "date": "2025-06-11T08:30:00",
+        "lat": 60.1552,
+        "lng": 24.9501,
+        "emoji": "🧘‍♀️",
+        "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 7,
+        "title": "Midsummer Bonfire",
+        "description": "Celebrate Juhannus with a traditional bonfire!",
+        "location": "Kuusijärventie 3, 01260 Vantaa",
+        "date": "2025-06-21T20:00:00",
+        "lat": 60.3078,
+        "lng": 25.1064,
+        "emoji": "🔥",
+        "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      }
+    ]
+  }
