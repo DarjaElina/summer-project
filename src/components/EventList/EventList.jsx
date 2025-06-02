@@ -27,6 +27,7 @@ async function fetchWeather(lat,lon) {
   }
 }
 
+
 export default function EventList() {
   const { events, loading } = useEvents();
   const [weatherData, setWeatherData] = useState({});
@@ -52,6 +53,12 @@ export default function EventList() {
       loadWeather();
     }
   }, [events]);
+export default function EventList() 
+  return <div>EventList</div>;
+}
+
+  const {events, loading} = useEvents()
+
 
   if (loading) {
     return <p>Loading events...</p>;
@@ -76,4 +83,5 @@ export default function EventList() {
     </div>
   );
 }
+
 
