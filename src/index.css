@@ -34,3 +34,23 @@
   --error-color: #ff6b6b;
   --hero-linear: linear-gradient(135deg, #9a9fff, #ff89a6);
 }
+
+body {
+  background-color: var(--primary-background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.text-muted {
+  color: var(--muted-color);
+}
+.text-error {
+  color: var(--error-color);
+}
+.text-success {
+  color: var(--success-color);
+}
+.text-warning {
+  color: var(--warning-color);
+}
