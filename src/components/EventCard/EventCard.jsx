@@ -9,3 +9,4 @@ export default function EventCard({ title, description, location, date, imageUrl
     </div>
   );
 }
+

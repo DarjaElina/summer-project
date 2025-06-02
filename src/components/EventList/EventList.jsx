@@ -1,7 +1,10 @@
 import EventCard from "../EventCard/EventCard";
 import { useEvents } from "../../context/EventContext";
 
-export default function EventList() {
+export default function EventList() 
+  return <div>EventList</div>;
+}
+
   const {events, loading} = useEvents()
 
   if (loading) {
@@ -28,4 +31,4 @@ export default function EventList() {
       )}
     </div>
   );
-}
+
