@@ -53,11 +53,6 @@ export default function EventList() {
       loadWeather();
     }
   }, [events]);
-export default function EventList() 
-  return <div>EventList</div>;
-}
-
-  const {events, loading} = useEvents()
 
 
   if (loading) {
