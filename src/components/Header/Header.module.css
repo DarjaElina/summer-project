@@ -2,24 +2,69 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px;
+  padding: 25px 40px;
   background-color: var(--primary-background-color);
+  border-bottom: 1px solid var(--border-color);
 }
+
 .header h2 {
-  color: green;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin: 0;
 }
-.h2 span {
-  color: blue;
+
+.header h2 span {
+  color: var(--primary-color); /* same color, no contrast */
 }
-.header ul li {
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
   display: inline-block;
 }
+
+/* Links base style */
 .a {
+  position: relative;
   text-decoration: none;
-  color: green;
-  margin: 0 10px;
-  font-size: 1.4rem;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
 }
-.a:hover {
-  color: var(--button-hover-bg);
+
+/* Underline animation */
+.a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
 }
+
+.a:hover::after,
+.a:focus::after {
+  width: 100%;
+}
+
+/* Active link style: just underline and bold text */
+.a.active,
+.a[aria-current="page"] {
+  font-weight: 700;
+}
+
+.a.active::after,
+.a[aria-current="page"]::after {
+  width: 100%;
+}
+

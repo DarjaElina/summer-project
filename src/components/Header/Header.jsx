@@ -40,7 +40,7 @@ export default function Header() {
               <a className={style.a} href="#contact">Contact</a>
             </li></>}
           {isAuthenticated && <><li>
-            <NavLink to="/events" className={style.a}>
+            <NavLink to="/events" className={style.a} end>
               My Events
             </NavLink>
           </li><li>

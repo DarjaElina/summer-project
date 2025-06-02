@@ -20,9 +20,6 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
       { path: "*", element: <PageNotFound /> },
-      { path: "events", element: <Events /> },
-      { path: "map", element: <MapPage /> },
-      { path: "calendar", element: <CalendarPage /> },
       {
         element: <PrivateRoute />,
         children: [
