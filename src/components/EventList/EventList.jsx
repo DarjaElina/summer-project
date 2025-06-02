@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import EventCard from "../EventCard/EventCard";
 import { useEvents } from "../../context/EventContext";
-import "../EventCard/EventCard.modules.css";
-import "./EventList.module.css";
+import styles from "./EventList.module.css";
 
 const API_KEY = "40850c8658af868d2f8d372ba505c430";
 
@@ -65,7 +64,7 @@ export default function EventList() {
       {events.length === 0 ? (
         <p>No events found right now</p>
       ) : (
-        <div className="events-container">
+        <div className={styles["events-container"]}>
           {events.map((event, index) => (
             <EventCard
               key={index}
