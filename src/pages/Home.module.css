@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.hero {
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  height: 90vh; /* Adjust height as needed */
+  background-image: url("src/assets/h.jpg"); /* **IMPORTANT: Replace with your image path** */
+  background-size: cover; /* Use cover to ensure it fills the area, contain shows the whole image */
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  text-align: center;
+  color: white; /* Text color on the hero image */
+  overflow: hidden; /* Ensures content stays within hero bounds */
+  padding: 0 20px; /* Add horizontal padding */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjusted Overlay opacity */
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2; /* Ensure content is above the overlay */
+  max-width: 800px; /* Limit content width */
+  margin-bottom: 40px; /* Space below text content */
+}
+
+.heroContent h1 {
+  font-size: 2rem; /* Adjust size */
+  margin-bottom: 0.5rem;
+  font-weight: 700; /* Adjusted font weight */
+  color: white;
+  margin-top: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.4rem; /* Adjust size */
+  margin-bottom: 1rem; /* Space below subtitle */
+  color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for subtitle */
+}
+
+.searchBarContainer {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px; /* Space below search bar */
+  width: 100%; /* Take full width */
+  max-width: 600px; /* Limit search bar width */
+  display: flex; /* Layout for search input and button */
+  gap: 10px; /* Space between input and button */
+  padding: 0 20px;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Add styles for the search input and button here */
+
+.statsContainer {
+  position: relative;
+  z-index: 2;
+  display: flex; /* Arrange stat cards in a row */
+  gap: 80px; /* Space between cards */
+  margin-top: auto; /* Push to the bottom */
+  padding-bottom: 50px; /* Space from the bottom edge */
+  justify-content: center; /* Center cards horizontally */
+  width: 100%;
+}
+
+.statCard {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  min-width: 120px; /* Minimum width for cards */
+}
+
+.statCard h3 {
+  font-size: 1rem; /* Size for the number */
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  color: white;
+}
+
+.statCard p {
+  font-size: 1rem; /* Size for the label */
+  margin: 0;
+  opacity: 0.8;
+}
+
+img {
+  width: 100%;
+  height: 10%;
+  overflow: hidden;
+  overflow: scroll;
+  opacity: unset;
+}
+
+img {
+  width: 100%;
+  height: auto; /* Keeps the image responsive */
+  object-fit: cover; /* Ensures the image fills the container nicely */
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
