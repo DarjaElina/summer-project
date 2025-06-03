@@ -1,120 +1,111 @@
 import React, { useState } from 'react';
 import Dropzone from '../Dropzone/Dropzone';
-import styles from "./CreateEventForm.module.css";
+import styles from './CreateEventForm.module.css';
 import { useCreateEvent } from '../../hooks/useCreateEvent';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
 
 const CreateEventForm = () => {
   const { createEvent, loading } = useCreateEvent();
   const [dropzoneKey, setDropzoneKey] = useState(0);
   const [formData, setFormData] = useState({
-    title: '',
-    location: '',
-    date: null,
-    type: 'general',
-    description: '',
-    image: null,
+    title: '', location: '', date: null,
+    type: '', description: '', image: null,
   });
+
+  const handleChange = (key, value) => setFormData({ ...formData, [key]: value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append('title', formData.title);
-    data.append('location', formData.location);
-    data.append('type', formData.type);
-    data.append('date', formData.date.toISOString());
-    data.append('description', formData.description);
-    if (formData.image) {
-      data.append('image', formData.image);
-    }
+    Object.entries(formData).forEach(([key, val]) => {
+      if (val) data.append(key, key === 'date' ? val.toISOString() : val);
+    });
 
     try {
       await createEvent(data);
-      console.log("Event created!");
-      console.log(formData)
-      setFormData({
-        title: '',
-        location: '',
-        date: '',
-        type: 'general',
-        description: '',
-        image: null,
-      });
-      setDropzoneKey(prev => prev + 1); 
-      toast.success("Event successfully created! 🎉");
+      toast.success('Event successfully created! 🎉');
+      setFormData({ title: '', location: '', date: null, type: 'general', description: '', image: null });
+      setDropzoneKey((k) => k + 1);
     } catch (err) {
-      toast.error("Oops! Something went wrong.");
+      toast.error('Oops! Something went wrong.');
       console.error(err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
-      <input
-        required
-        id="title"
-        type="text"
-        value={formData.title}
-        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-      />
+    <div className={styles.container}>
+      <div className={styles.gradientCircle} />
+      <div className={styles.formWrapper}>
+        <h2 className={styles.heading}>Create a New Event</h2>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          {['title', 'location'].map((field) => (
+            <div key={field} className={styles.inputGroup}>
+              <input
+                type="text"
+                id={field}
+                value={formData[field]}
+                required
+                onChange={(e) => handleChange(field, e.target.value)}
+                className={formData[field] ? styles.filled : ''}
+              />
+              <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+            </div>
+          ))}
 
-      <label htmlFor="location">Location</label>
-      <input
-        required
-        id="location"
-        type="text"
-        value={formData.location}
-        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-      />
+          <div className={styles.inputGroup}>
+            <DatePicker
+              id="date"
+              selected={formData.date}
+              onChange={(date) => handleChange('date', date)}
+              showTimeSelect
+              minDate={new Date()}
+              dateFormat="Pp"
+              className={`${styles.datepicker} ${formData.date ? styles.filled : ''}`}
+              required
+            />
+            <label htmlFor="date">Date & Time</label>
+          </div>
 
-      <label htmlFor="date">Date</label>
-      <DatePicker
-        required
-        selected={formData.date}
-        onChange={(date) => setFormData({ ...formData, date })}
-        showTimeSelect
-        minDate={new Date()}
-        dateFormat="Pp"
-      />
+          <div className={styles.inputGroup}>
+            <select
+              id="type"
+              value={formData.type}
+              onChange={(e) => handleChange('type', e.target.value)}
+              className={styles.select}
+            >
+              <option defaultValue>Select event type</option>
+              {['general', 'course', 'volunteering', 'sports', 'music', 'art and culture', 'food and drink', 'networking', 'online', 'kids and family'].map((type) => (
+                <option key={type} value={type}>{type[0].toUpperCase() + type.slice(1)}</option>
+              ))}
+            </select>
+          </div>
 
-      <label htmlFor="type">Type</label>
-      <select
-        style={styles.select}
-        id="type"
-        value={formData.type}
-        onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-      >
-          <option value="general">General</option>
-          <option value="course">Course</option>
-          <option value="volunteering">Volunteering</option>
-          <option value="sports">Sports</option>
-          <option value="music">Music</option>
-          <option value="art and culture">Art & Culture</option>
-          <option value="food and drink">Food & Drink</option>
-          <option value="networking">Networking</option>
-          <option value="online">Online</option>
-          <option value="kids and family">Kids & Family</option>
-      </select>
+          <Dropzone key={dropzoneKey} onFileSelect={(file) => handleChange('image', file)} />
 
-      <label>Image</label>
-      <Dropzone
-        key={dropzoneKey}
-        onFileSelect={(file) => setFormData({ ...formData, image: file })}
-      />
+          <div className={styles.inputGroup}>
+            <textarea
+              value={formData.description}
+              onChange={(e) => handleChange('description', e.target.value)}
+              rows={4}
+              className={formData.description ? styles.filled : ''}
+            />
+            <label>Description</label>
+          </div>
 
-      <label>Description</label>
-      <textarea
-        value={formData.description}
-        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-      />
-
-      <button type="submit" disabled={loading}>
-        {loading ? "Creating..." : "Create Event"}
-      </button>
-    </form>
+          <button type="submit" disabled={loading} className="button button-gradient">
+            {loading ? 'Creating...' : 'Create Event'}
+          </button>
+        </form>
+      </div>
+      <div className={styles.sideImage}>
+        <img
+          src="https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?q=80&w=3088&auto=format&fit=crop"
+          alt="Fancy event lights"
+        />
+      </div>
+    </div>
   );
 };
 

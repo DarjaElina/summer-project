@@ -1,0 +1,73 @@
+.fc {
+  background-color: var(--secondary-background-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  font-family: "Montserrat", Arial, sans-serif;
+  color: var(--text-color);
+  box-shadow: 0 4px 12px rgba(30, 30, 47, 0.1);
+}
+
+.fc-toolbar-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.fc .fc-button-primary {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  box-shadow: none;
+}
+
+.fc .fc-button-primary:hover:not(:disabled) {
+  background-color: var(--primary-color-dark, #1e40af);
+  cursor: pointer;
+}
+
+.fc-button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.fc-daygrid-day-number {
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 0.25rem;
+}
+
+.fc-daygrid-day {
+  transition: background-color 0.15s ease;
+  border-radius: 8px;
+}
+
+.fc-daygrid-day:hover {
+  background-color: var(--primary-color-light, #e0e7ff);
+  cursor: pointer;
+}
+
+.fc-event {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(30, 30, 47, 0.2);
+}
+
+.fc-event:hover {
+  background-color: var(--primary-color-dark, #1e40af);
+  cursor: pointer;
+}
+
+.fc-daygrid-event-dot {
+  border-color: #fff;
+}
