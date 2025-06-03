@@ -5,7 +5,7 @@ import Root from "./pages/Root";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Events from "./pages/Events";
-import CalendarPage from "./pages/CalendarPage";
+import CalendarPage from "./pages/Calendar/Calendar";
 import MapPage from "./pages/MapPage";
 import CreateEvent from "./pages/CreateEvent";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
