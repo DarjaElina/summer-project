@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styles from "./LoginForm.module.css";
-import { login } from "../../services/auth";
-import { useAuth } from "../../context/AuthContext";
+import useLogin from "../../hooks/useLogin";
 import { useNavigate } from "react-router";
+import { toast } from "react-hot-toast";
 
 export default function LoginForm() {
-  const [formData, setFormData] = useState({ username: "", password: "" });
-  const [error, setError] = useState(null);
-  const { authenticate } = useAuth();
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const { login, loading } = useLogin();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,31 +16,32 @@ export default function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
     try {
-      const userData = await login(formData);
-      authenticate(userData);
-      navigate("/events");
-    } catch (e) {
-      console.error("Login failed:", e);
-      setError("Invalid username or password");
+      await login(formData);
+      toast.success("Log in successful.");
+      navigate('/events');
+    } catch (errors) {
+      errors.forEach(err => toast.error(err));
+    } finally {
+      setFormData({ email: "", password: "" })
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form} noValidate>
+      <h3>Log In</h3>
       <div className={styles.inputGroup}>
         <input
-          id="username"
-          name="username"
-          type="text"
-          value={formData.username}
+          id="email"
+          name="email"
+          type="email"
+          value={formData.email}
           onChange={handleChange}
           required
-          className={formData.username ? "filled" : ""}
-          autoComplete="username"
+          className={formData.email ? "filled" : ""}
+          autoComplete="email"
         />
-        <label htmlFor="username">Username</label>
+        <label htmlFor="email">Email</label>
       </div>
 
       <div className={styles.inputGroup}>
@@ -57,11 +57,8 @@ export default function LoginForm() {
         />
         <label htmlFor="password">Password</label>
       </div>
-
-      {error && <p className={styles.error}>{error}</p>}
-
       <button type="submit" className="button button-gradient">
-        Log In
+        {loading ? "Logging In..." : "Log In"}
       </button>
     </form>
   );
