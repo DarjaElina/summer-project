@@ -5,7 +5,6 @@ import App from './App.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { EventProvider } from './context/EventContext.jsx'
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    <AuthProvider>
@@ -15,3 +14,10 @@ createRoot(document.getElementById('root')).render(
    </AuthProvider>
   </StrictMode>,
 )
+
+
+
+
+
+
+ 

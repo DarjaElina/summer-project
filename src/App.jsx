@@ -9,7 +9,9 @@ import CalendarPage from "./pages/CalendarPage";
 import MapPage from "./pages/MapPage";
 import CreateEvent from "./pages/CreateEvent";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import './App.css';
+import "./App.css";
+import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
           {
             path: "map",
             element: <MapPage />,
+          },
+          {
+            path: "themetoggle", 
+            element: <ThemeToggle />,
           },
         ],
       },
