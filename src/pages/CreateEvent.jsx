@@ -1,8 +1,11 @@
+import CreateEventForm from "../components/CreateEvent/CreateEventForm"
+
 const CreateEvent = () => {
+
   return (
-    <div>
-      <h1>I am CreateEvent page</h1>
-    </div>
+    <>
+      <CreateEventForm/>
+    </>
   )
 }
 

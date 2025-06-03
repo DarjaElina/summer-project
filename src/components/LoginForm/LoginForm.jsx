@@ -29,18 +29,40 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <label htmlFor="username" className={styles.label}>Username</label>
-      <input name="username" onChange={handleChange} className={styles.input} required />
+    <form onSubmit={handleSubmit} className={styles.form} noValidate>
+      <div className={styles.inputGroup}>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          value={formData.username}
+          onChange={handleChange}
+          required
+          className={formData.username ? "filled" : ""}
+          autoComplete="username"
+        />
+        <label htmlFor="username">Username</label>
+      </div>
 
-      <label htmlFor="password" className={styles.label}>Password</label>
-      <input name="password" type="password" onChange={handleChange} className={styles.input} required />
+      <div className={styles.inputGroup}>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          className={formData.password ? "filled" : ""}
+          autoComplete="current-password"
+        />
+        <label htmlFor="password">Password</label>
+      </div>
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <button type="submit" className={styles.button}>Log In</button>
+      <button type="submit" className="button button-gradient">
+        Log In
+      </button>
     </form>
   );
 }
-
-

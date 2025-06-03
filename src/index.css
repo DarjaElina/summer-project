@@ -1,10 +1,18 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Variables */
+
+/* Light Theme */
 :root {
-  /* Light Theme */
+  /* Colors */
   --primary-background-color: #f7f9fc;
   --secondary-background-color: #ffffff;
   --primary-color: #6c63ff;
@@ -17,10 +25,16 @@
   --warning-color: #ffa726;
   --error-color: #ea5455;
   --hero-linear: linear-gradient(135deg, #6c63ff, #ff6584);
+
+  /* Font */
+  --font-family: 'Montserrat', sans-serif;
+
+  /* Side image */
+  --side-image-url: url('https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?q=80&w=3088&auto=format&fit=crop');
 }
 
+/* Dark theme overrides */
 :root[data-theme="dark"] {
-  /* Dark Theme */
   --primary-background-color: #121212;
   --secondary-background-color: #1f1f2f;
   --primary-color: #9a9fff;
@@ -33,4 +47,180 @@
   --warning-color: #ffc76b;
   --error-color: #ff6b6b;
   --hero-linear: linear-gradient(135deg, #9a9fff, #ff89a6);
+
+  /* Side image */
+  --side-image-url: url('https://images.unsplash.com/photo-1595037935521-15ce2282a03e?q=80&w=3087&auto=format&fit=crop');
+}
+
+/* Base body styles */
+body {
+  background-color: var(--primary-background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Form base styles */
+form {
+  max-width: 420px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: var(--secondary-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(4px);
+  font-family: var(--font-family);
+  position: relative; /* for labels */
+}
+
+/* Form inputs */
+input,
+textarea,
+select {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  padding: 1rem 0;
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-bottom-color: var(--primary-color);
+}
+
+/* Textarea tweaks */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: var(--secondary-background-color);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 20px;
+}
+
+/* Labels for inputs (floating effect) */
+label {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  color: var(--muted-color);
+  font-weight: 500;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+/* Label floating triggers */
+input:focus + label,
+input.filled + label,
+textarea.filled + label,
+textarea:focus + label,
+select:focus + label,
+select.filled + label {
+  top: -10px;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Autofill fix */
+form input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px var(--secondary-background-color) inset !important;
+  -webkit-text-fill-color: var(--text-color) !important;
+  transition: background-color 5000s ease-in-out 0s;
+  color: var(--text-color);
+}
+
+/* Buttons base and variations */
+.button {
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-family);
+}
+
+.button-gradient {
+  background: linear-gradient(to right, #4f46e5, #3b82f6);
+  color: white;
+}
+
+.button-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Utility text classes */
+.text-muted {
+  color: var(--muted-color);
+}
+
+.text-error {
+  color: var(--error-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-warning {
+  color: var(--warning-color);
+}
+
+/* Side Image styles */
+.sideImage {
+  background-image: var(--side-image-url);
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 850px) {
+  .sideImage {
+    height: 200px;
+    flex: unset;
+  }
 }

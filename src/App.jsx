@@ -5,11 +5,13 @@ import Root from "./pages/Root";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Events from "./pages/Events";
-import CalendarPage from "./pages/CalendarPage";
+import CalendarPage from "./pages/Calendar/Calendar";
 import MapPage from "./pages/MapPage";
 import CreateEvent from "./pages/CreateEvent";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import './App.css';
+import "./App.css";
+import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+
 
 const router = createBrowserRouter([
   {
@@ -20,9 +22,6 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
       { path: "*", element: <PageNotFound /> },
-      { path: "events", element: <Events /> },
-      { path: "map", element: <MapPage /> },
-      { path: "calendar", element: <CalendarPage /> },
       {
         element: <PrivateRoute />,
         children: [
@@ -41,6 +40,10 @@ const router = createBrowserRouter([
           {
             path: "map",
             element: <MapPage />,
+          },
+          {
+            path: "themetoggle", 
+            element: <ThemeToggle />,
           },
         ],
       },

@@ -1,3 +1,4 @@
+import style from "./EventCard.module.css";
 
 export default function EventCard({ title, description, location, date, imageUrl, emoji, weather }) {
   const d = new Date(date);
@@ -6,21 +7,21 @@ export default function EventCard({ title, description, location, date, imageUrl
   const formattedDate = `${day} ${month}`;
 
   return (
-    <div className="event-card">
+    <div className={style["event-card"]}>
       {imageUrl && (
-        <div className="event-image">
+        <div className={style["event-image"]}>
           <img src={imageUrl} alt={title} />
-          <div className="date-badge">{formattedDate}</div>
+          <div className={style["date-badge"]}>{formattedDate}</div>
         </div>
       )}
-      <div className="event-content">
+      <div className={style["event-content"]}>
         <h2>{emoji} {title}</h2>
         <p><strong>Date:</strong> {formattedDate}</p>
         <p><strong>Location:</strong> {location}</p>
         <p>{description}</p>
 
         {weather && (
-          <div className="event-weather">
+          <div className={style["event-weather"]}>
             🌤️ <span><strong>Weather:</strong> {weather.temp}°C, {weather.description}</span>
           </div>
         )}
