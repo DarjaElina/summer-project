@@ -20,7 +20,7 @@ body {
 }
 
 .header h2 span {
-  color: var(--primary-color); /* same color, no contrast */
+  color: var(--primary-color);
 }
 
 nav ul {
@@ -63,7 +63,6 @@ nav ul li {
   width: 100%;
 }
 
-/* Active link style: just underline and bold text */
 .a.active,
 .a[aria-current="page"] {
   font-weight: 700;

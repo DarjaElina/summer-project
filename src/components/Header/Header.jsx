@@ -77,13 +77,16 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <button onClick={handleLogout}>Log Out</button>
+                <button className="button button-gradient" onClick={handleLogout}>
+                  Log Out
+                </button>
               </li>
             </>
           )}
+
           <li>
-                <ThemeToggle />
-              </li>
+            <ThemeToggle />
+          </li>
         </ul>
       </nav>
     </header>
