@@ -66,6 +66,19 @@
   /* dummy class used to trigger floating labels */
 }
 
+label {
+  position: absolute;
+}
+
+.staticLabel {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  position: relative;
+}
+
 /* Responsive */
 @media (max-width: 850px) {
   .container {

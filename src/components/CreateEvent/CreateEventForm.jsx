@@ -49,27 +49,28 @@ const CreateEventForm = () => {
                 value={formData[field]}
                 required
                 onChange={(e) => handleChange(field, e.target.value)}
-                className={formData[field] ? styles.filled : ''}
+                className={formData[field] ? 'filled' : ''}
               />
               <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
             </div>
           ))}
 
-          <div className={styles.inputGroup}>
+           <div className={styles.inputGroup}>
+           <label htmlFor="datee" className={styles.staticLabel}>Date</label>
             <DatePicker
-              id="date"
-              selected={formData.date}
-              onChange={(date) => handleChange('date', date)}
-              showTimeSelect
-              minDate={new Date()}
-              dateFormat="Pp"
-              className={`${styles.datepicker} ${formData.date ? styles.filled : ''}`}
-              required
-            />
-            <label htmlFor="date">Date & Time</label>
-          </div>
+                id="date"
+                selected={formData.date || new Date()}
+                onChange={(date) => handleChange('date', date)}
+                showTimeSelect
+                minDate={new Date()}
+                dateFormat="Pp"
+                className={styles.datepicker}
+                required
+              />
+           </div>
 
           <div className={styles.inputGroup}>
+            <label htmlFor="type" className={styles.staticLabel}>Type</label>
             <select
               id="type"
               value={formData.type}
@@ -90,7 +91,7 @@ const CreateEventForm = () => {
               value={formData.description}
               onChange={(e) => handleChange('description', e.target.value)}
               rows={4}
-              className={formData.description ? styles.filled : ''}
+              className={formData['description'] ? 'filled' : ''}
             />
             <label>Description</label>
           </div>
