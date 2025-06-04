@@ -1,6 +1,16 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./EventCard.module.css";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-export default function EventCard({ title, description, location, date, image_url, emoji, weather }) {
+export default function EventCard({
+  title,
+  description,
+  location,
+  date,
+  image_url,
+  emoji,
+  weather,
+}) {
   const d = new Date(date);
   const day = d.getDate();
   const month = d.toLocaleString("en-US", { month: "long" });
@@ -15,18 +25,36 @@ export default function EventCard({ title, description, location, date, image_ur
         </div>
       )}
       <div className={style["event-content"]}>
-        <h2>{emoji} {title}</h2>
-        <p><strong>Date:</strong> {formattedDate}</p>
-        <p><strong>Location:</strong> {location}</p>
+        <h2>
+          {emoji} {title}
+        </h2>
+        <p>
+          <strong>Date:</strong> {formattedDate}
+        </p>
+        <p>
+          <strong>Location:</strong> {location}
+        </p>
         <p>{description}</p>
 
         {weather && (
           <div className={style["event-weather"]}>
-            🌤️ <span><strong>Weather:</strong> {weather.temp}°C, {weather.description}</span>
+            🌤️{" "}
+            <span>
+              <strong>Weather:</strong> {weather.temp}°C, {weather.description}
+            </span>
           </div>
         )}
+        <div className={style["event-button-box"]}>
+          <button>
+            <FontAwesomeIcon icon={faPenToSquare} />
+            Edit
+          </button>
+          <button>
+            <FontAwesomeIcon icon={faTrashCan} />
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );
 }
-
