@@ -11,7 +11,7 @@ export const EventProvider = ({ children }) => {
     const loadEvents = async () => {
       try {
         const data = await getAll();
-        setEvents(data);
+        setEvents(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Failed to fetch events", err);
       } finally {

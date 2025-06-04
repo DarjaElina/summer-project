@@ -1,6 +1,6 @@
 import style from "./EventCard.module.css";
 
-export default function EventCard({ title, description, location, date, imageUrl, emoji, weather }) {
+export default function EventCard({ title, description, location, date, image_url, emoji, weather }) {
   const d = new Date(date);
   const day = d.getDate();
   const month = d.toLocaleString("en-US", { month: "long" });
@@ -8,9 +8,9 @@ export default function EventCard({ title, description, location, date, imageUrl
 
   return (
     <div className={style["event-card"]}>
-      {imageUrl && (
+      {image_url && (
         <div className={style["event-image"]}>
-          <img src={imageUrl} alt={title} />
+          <img src={image_url} alt={title} />
           <div className={style["date-badge"]}>{formattedDate}</div>
         </div>
       )}
