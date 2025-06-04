@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className={style.header}>
       <h2>
-        Event<span>Planner</span>
+        HELSINKI <span>Event Planner</span>
       </h2>
       <nav>
         <ul>
