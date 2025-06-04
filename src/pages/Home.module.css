@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Edu+SA+Hand:wght@400..700&display=swap");
 
 .hero {
   font-family: "Montserrat", sans-serif;
@@ -116,4 +117,110 @@ img {
   height: 600px;
   object-fit: cover;
   display: block;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.ctaButton:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.ctaButton:focus {
+  outline: 2px solid #c7d2fe;
+  outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Section styling */
+section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+section div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section h1 {
+  font-family: "Edu SA Hand", cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+section p {
+  font-size: 1.2rem;
+  color: var(--muted-color);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Button styling */
+.ctaButton {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.ctaButton:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.ctaButton:focus {
+  outline: 2px solid #c7d2fe;
+  outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
 }
