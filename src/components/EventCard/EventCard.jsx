@@ -17,7 +17,7 @@ export default function EventCard({ title, description, location, date, image_ur
       <div className={style["event-content"]}>
         <h2>{emoji} {title}</h2>
         <p><strong>Date:</strong> {formattedDate}</p>
-        <p><strong>Location:</strong> {location}</p>
+        <p>📍<strong>Location:</strong> {location}</p>
         <p>{description}</p>
 
         {weather && (
