@@ -170,7 +170,7 @@ form input:-webkit-autofill {
 }
 
 .button-gradient {
-  background: linear-gradient(to right, #4f46e5, #3b82f6);
+  background: linear-gradient(to right, var(--primary-color), var(--button-hover-bg));
   color: white;
 }
 

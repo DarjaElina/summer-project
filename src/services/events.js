@@ -1,14 +1,13 @@
-import axios from "axios";
-
-const BASE_URL = "http://localhost:3001";
+import api from "./axios";
 
 export const getAll = async () => {
-  const response = await axios.get(`${BASE_URL}/events`);
-  return response.data;
+  const response = await api.get('/events');
+  console.log(response.data.events);
+  return response.data.events;
 };
 
 export const create = async (newEvent) => {
-  const response = await axios.post(`http://localhost:3000/api/events`, newEvent,
+  const response = await api.post('/events', newEvent,
     {
       headers: {
         'Content-Type': 'multipart/form-data',

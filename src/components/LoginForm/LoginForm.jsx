@@ -57,7 +57,7 @@ export default function LoginForm() {
         />
         <label htmlFor="password">Password</label>
       </div>
-      <button type="submit" className="button button-gradient">
+      <button type="submit" className="button button-gradient" disabled={loading}>
         {loading ? "Logging In..." : "Log In"}
       </button>
     </form>
