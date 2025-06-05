@@ -44,9 +44,10 @@
 }
 
 .img {
-  display: block;
-  width: auto;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .removeButton {
@@ -63,3 +64,13 @@
 .removeButton:hover {
   background-color: #d50000;
 }
+
+/* _formWrapper_rrdbd_44 {
+  flex: 1 1 60%;
+  padding: 3rem 3rem 3rem 4rem;
+  z-index: 1;
+  display: flex
+;
+  flex-direction: column;
+  justify-content: center;
+} */
