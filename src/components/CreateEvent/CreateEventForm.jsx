@@ -11,7 +11,6 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
-console.log(MAPBOX_TOKEN)
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -22,7 +21,7 @@ const validationSchema = Yup.object().shape({
     .min(new Date(), 'Date must be in the future'),
   type: Yup.string().required('Type is required'),
   description: Yup.string().required('Description is required'),
-  image: Yup.mixed().required('Image is required')
+  image: Yup.mixed().required('Image is required'),
 });
 
 const CreateEventForm = () => {
@@ -36,7 +35,8 @@ const CreateEventForm = () => {
     date: new Date(),
     type: 'general',
     description: '',
-    image: null
+    image: null,
+    is_public: false,
   };
 
   // const getCoordsFromAddress = async (address) => {
@@ -61,10 +61,12 @@ const CreateEventForm = () => {
 
     const data = new FormData();
     Object.entries(values).forEach(([key, val]) => {
-      if (val) {
+      if (val !== undefined && val !== null) {
         if (key === 'date') {
           const mysqlDate = val.toISOString().slice(0, 19).replace('T', ' ');
           data.append(key, mysqlDate);
+        } else if (typeof val === 'boolean') {
+          data.append(key, val ? '1' : '0');
         } else {
           data.append(key, val);
         }
@@ -76,6 +78,8 @@ const CreateEventForm = () => {
 
     data.append('lat', 60.1699);
     data.append('lon', 24.9384);
+
+    console.log(data.get('is_public'));
 
     try {
       await createEvent(data);
@@ -104,14 +108,14 @@ const CreateEventForm = () => {
             <Form className={styles.form}>
               <div className={styles.inputGroup}>
                 <label className={styles.staticLabel} htmlFor="title">Title ✱</label>
-                <Field name="title" type="text" className={values.title ? 'filled' : ''} />
+                <Field id="title" name="title" type="text" className={values.title ? 'filled' : ''} />
                 <ErrorMessage name="title" component="div" className={styles.formError} />
               </div>
 
               <div className={styles.inputGroup}>
                 <label className={styles.staticLabel} htmlFor="location">Location ✱</label>
                 {/* <AddressAutofill accessToken={MAPBOX_TOKEN}> */}
-                <Field name="location" type="text" autoComplete="address-line1" style={{ width: '100%' }} />
+                <Field id="location" name="location" type="text" autoComplete="address-line1" style={{ width: '100%' }} />
                 {/* </AddressAutofill> */}
                 <ErrorMessage name="location" component="div" className={styles.formError} />
               </div>
@@ -125,13 +129,14 @@ const CreateEventForm = () => {
                   minDate={new Date()}
                   dateFormat="Pp"
                   className={styles.datepicker}
+                  id="date"
                 />
                 <ErrorMessage name="date" component="div" className={styles.formError} />
               </div>
 
               <div className={styles.inputGroup}>
                 <label htmlFor="type" className={styles.staticLabel}>Type ✱</label>
-                <Field as="select" name="type" className={styles.select}>
+                <Field id="type" as="select" name="type" className={styles.select}>
                   {['general', 'course', 'volunteering', 'sports', 'music', 'art and culture', 'food and drink', 'networking', 'online', 'kids and family'].map((type) => (
                     <option key={type} value={type}>
                       {type[0].toUpperCase() + type.slice(1)}
@@ -149,8 +154,13 @@ const CreateEventForm = () => {
 
               <div className={styles.inputGroup}>
                 <label htmlFor="description" className={styles.staticLabel}>Description ✱</label>
-                <Field as="textarea" name="description" rows={4} className={values.description ? 'filled' : ''} />
+                <Field id="description" as="textarea" name="description" rows={4} className={values.description ? 'filled' : ''} />
                 <ErrorMessage name="description" component="div" className={styles.formError} />
+              </div>
+
+              <div className={styles.checkboxRow}>
+                <Field id="isPublic" type="checkbox" name="is_public" />
+                <label className={styles.staticLabel} htmlFor="isPublic">Make this event public</label>
               </div>
 
               <button type="submit" disabled={loading} className="button button-gradient">
