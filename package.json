@@ -11,10 +11,17 @@
     "server": "node fake_backend/server.js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/react": "^6.1.17",
+    "@mapbox/search-js-react": "^1.1.0",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "leaflet": "^1.9.4",
     "react": "^19.0.0-rc.1",
     "react-datepicker": "^8.4.0",
@@ -24,7 +31,8 @@
     "react-icons": "^5.5.0",
     "react-leaflet": "^5.0.0-rc.2",
     "react-router": "^7.6.1",
-    "react-spinners": "^0.17.0"
+    "react-spinners": "^0.17.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

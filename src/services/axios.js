@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://event_planner.test/api",
+  baseURL:
+    import.meta.env.VITE_API_URL || "http://summer-project-backend.test/api",
 });
 
 const token = localStorage.getItem("token");
