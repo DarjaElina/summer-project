@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Edu+SA+Hand:wght@400..700&display=swap");
+
+.hero {
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  height: 90vh;
+  background-image: url("src/assets/h.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.heroContent h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.searchBarContainer {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.statsContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 80px;
+  margin-top: auto;
+  padding-bottom: 50px;
+  justify-content: center;
+  width: 100%;
+}
+
+.statCard {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  min-width: 120px;
+}
+
+.statCard h3 {
+  font-size: 1rem;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  color: white;
+}
+
+.statCard p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.ctaButton:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.ctaButton:focus {
+  outline: 2px solid #c7d2fe;
+  outline-offset: 2px;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+section div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section h1 {
+  font-family: "Edu SA Hand", cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+section p {
+  font-size: 1.2rem;
+  color: var(--muted-color);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
