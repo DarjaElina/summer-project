@@ -3,6 +3,7 @@ import heroImage from "../assets/h.jpg";
 import { Link } from "react-router"; 
 import PublicEventCard from "../components/PublicEventCard/PublicEventCard";
 import { useEvents } from "../context/EventContext";
+import EventCard from "../components/EventCard/EventCard";
 
 export default function Home() {
   const {events: publicEvents, loading} = useEvents();
@@ -32,8 +33,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ marginTop: "2rem" }}>
-        <h2>Public Events</h2>
+      <section>
+        <h2>Upcoming Events</h2>
         {loading ? (
           <p>Loading public events...</p>
         ) : publicEvents.length === 0 ? (
@@ -42,9 +43,7 @@ export default function Home() {
           publicEvents.map((event) => (
             <PublicEventCard
               key={event.id}
-              id={event.id}
-              title={event.title}
-              date={event.date}
+              {...event}
             />
           ))
         )}

@@ -1,24 +1,21 @@
-import React from "react";
-export default function PublicEventCard({ id, title, date }) {
-  const d = new Date(date);
-  const day = d.getDate();
-  const month = d.toLocaleString("en-US", { month: "long" });
-  const formattedDate = `${day} ${month}`;
+import styles from './PublicEventCard.module.css';
 
-  const handleRegister = () => {
-    alert(`Registered for event: ${title}`);
-  };
+export default function PublicEventCard({ title, location, date, image_url, emoji }) {
+  const d = new Date(date);
+  const formattedDate = `${d.getDate()} ${d.toLocaleString("en-US", { month: "short" })}`;
 
   return (
-    <div>
-      <div>
-        <h2>{title}</h2>
-        <p>
-          <strong>Date:</strong> {formattedDate}
-        </p>
-        <button onClick={handleRegister}>
-          Register
-        </button>
+    <div className={styles.card}>
+      {image_url && (
+        <div className={styles.imageWrapper}>
+          <img src={image_url} alt={title} className={styles.image} />
+          <div className={styles.badge}>{formattedDate}</div>
+        </div>
+      )}
+      <div className={styles.content}>
+        <h3 className={styles.title}>{emoji} {title}</h3>
+        <p className={styles.location}><strong>Location:</strong> {location}</p>
+        <button className={styles.button}>Register</button>
       </div>
     </div>
   );
