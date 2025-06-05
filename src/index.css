@@ -108,7 +108,7 @@ select:focus {
 /* Textarea tweaks */
 textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 30px;
 }
 
 textarea::-webkit-scrollbar {
