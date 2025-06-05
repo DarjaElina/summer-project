@@ -11,6 +11,7 @@ export const useCreateEvent = () => {
     setLoading(true);
     setError(null);
     try {
+      console.log(newEvent.get('is_public'));
       const data = await create(newEvent);
       setEvents(prev => [...prev, data.event]);
     } catch (err) {

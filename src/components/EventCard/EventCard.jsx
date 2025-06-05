@@ -18,7 +18,6 @@ export default function EventCard({
   const month = d.toLocaleString("en-US", { month: "long" });
   const formattedDate = `${day} ${month}`;
 
-  //Delete edit functionality here
   const [eventObj, setEventObj] = useState({
     title,
     description,
@@ -29,28 +28,19 @@ export default function EventCard({
   const [isEdit, setIsEdit] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
-  const handleEdit = () => {
-    setIsEdit((prev) => !prev);
-  };
-  const handleDelete = (id) => {
-    console.log("Delete Id is", id);
-    //Delete API here
-  };
+  const handleEdit = () => setIsEdit((prev) => !prev);
+  const cancelEdit = () => setIsEdit((prev) => !prev);
+  const handleDelete = (id) => console.log("Delete Id is", id);
+
   const onInputEdit = (e) => {
-    let { name, value } = e.target;
-    console.log("Name:", name, "Value: ", value);
+    const { name, value } = e.target;
     setEventObj((prev) => ({ ...prev, [name]: value }));
   };
 
   const saveEdit = (id) => {
     console.log("Edit Id is", id);
-    setIsEdit((prev) => !prev);
-    //new Event Object is here
-    console.log(eventObj);
-    //Delete API here
-  };
-  const cancelEdit = () => {
-    setIsEdit((prev) => !prev);
+    console.log("Updated event:", eventObj);
+    setIsEdit(false);
   };
 
   return (
@@ -61,57 +51,47 @@ export default function EventCard({
           <div className={style["date-badge"]}>{formattedDate}</div>
         </div>
       )}
-      {isEdit ? (
-        <div className={style["event-content"]}>
-          <h2>
-            {emoji}
-            <input
-              type="text"
-              name="title"
-              id=""
-              value={eventObj.title}
-              onChange={onInputEdit}
-            />
-          </h2>
-          <p>
-            <strong>Date:</strong>{" "}
-            <input
-              type="text"
-              name="date"
-              value={eventObj.date}
-              onChange={onInputEdit}
-            />
-          </p>
-          <p>
-            <strong>Location:</strong>{" "}
-            <input
-              type="text"
-              name="location"
-              value={eventObj.location}
-              onChange={onInputEdit}
-            />
-          </p>
-          <div style={{ width: "100%" }}>
-            <input
-              type="text"
-              name="description"
-              value={eventObj.description}
-              style={{ width: "100%" }}
-              onChange={onInputEdit}
-            />
-          </div>
 
-          {weather && (
-            <div>
-              🌤️{" "}
-              <span>
-                <strong>Weather:</strong> {weather.temp}°C,{" "}
-                {weather.description}
-              </span>
+      <div className={style["event-content"]}>
+        {isEdit ? (
+          <>
+            <h2>
+              {emoji}
+              <input
+                type="text"
+                name="title"
+                value={eventObj.title}
+                onChange={onInputEdit}
+              />
+            </h2>
+            <p>
+              <strong>Date:</strong>{" "}
+              <input
+                type="text"
+                name="date"
+                value={eventObj.date}
+                onChange={onInputEdit}
+              />
+            </p>
+            <p>
+              <strong>Location:</strong>{" "}
+              <input
+                type="text"
+                name="location"
+                value={eventObj.location}
+                onChange={onInputEdit}
+              />
+            </p>
+            <div style={{ width: "100%" }}>
+              <input
+                type="text"
+                name="description"
+                value={eventObj.description}
+                style={{ width: "100%" }}
+                onChange={onInputEdit}
+              />
             </div>
-          )}
-          {showMore ? (
-            <>
+            {showMore && (
               <div className={style["event-button-box"]}>
                 <button onClick={() => saveEdit(id)}>
                   <FontAwesomeIcon icon={faPenToSquare} />
@@ -122,84 +102,48 @@ export default function EventCard({
                   Cancel
                 </button>
               </div>
-              <p
-                onClick={() => {
-                  setShowMore((prev) => !prev);
-                }}
-              >
-                See Less
-              </p>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={() => {
-                  setShowMore((prev) => !prev);
-                }}
-              >
-                See More
-              </button>
-            </>
-          )}
-        </div>
-      ) : (
-        <div className={style["event-content"]}>
-          <h2>
-            {emoji} {title}
-          </h2>
-          <p>
-            <strong>Date:</strong> {formattedDate}
-          </p>
-          <p>
-            <strong>Location:</strong> {location}
-          </p>
-          <p>{description}</p>
-
-          {weather && (
-            <div className={style["event-weather"]}>
-              🌤️{" "}
-              <span>
-                <strong>Weather:</strong> {weather.temp}°C,{" "}
-                {weather.description}
-              </span>
-            </div>
-          )}
-          {showMore ? (
-            <>
+            )}
+          </>
+        ) : (
+          <>
+            <h2>
+              {emoji} {title}
+            </h2>
+            <p>
+              <strong>Date:</strong> {formattedDate}
+            </p>
+            <p>
+              <strong>Location:</strong> {location}
+            </p>
+            <p>{description}</p>
+            {showMore && (
               <div className={style["event-button-box"]}>
                 <button onClick={handleEdit}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                   Edit
                 </button>
                 <button onClick={() => handleDelete(id)}>
-                  {/* //Here I was */}
                   <FontAwesomeIcon icon={faTrashCan} />
                   Delete
                 </button>
               </div>
-              <button
-                className={style.seeLess}
-                onClick={() => {
-                  setShowMore((prev) => !prev);
-                }}
-              >
-                See Less
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                className={style.seeMore}
-                onClick={() => {
-                  setShowMore((prev) => !prev);
-                }}
-              >
-                See More
-              </button>
-            </>
-          )}
-        </div>
-      )}
+            )}
+          </>
+        )}
+
+        {weather && (
+          <div className={style["event-weather"]}>
+            🌤️ <strong>Weather:</strong> {weather.temp}°C, {weather.description}
+          </div>
+        )}
+
+        <button
+          className={showMore ? style.seeLess : style.seeMore}
+          onClick={() => setShowMore((prev) => !prev)}
+        >
+          {showMore ? "See Less" : "See More"}
+        </button>
+      </div>
     </div>
   );
 }
