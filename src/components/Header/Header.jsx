@@ -53,12 +53,6 @@ export default function Header() {
                   Contact Us
                 </NavLink>
               </li>
-
-              <li>
-                <a className={style.a} href="#contact">
-                  Contact
-                </a>
-              </li>
             </>
           )}
 

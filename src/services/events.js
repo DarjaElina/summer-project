@@ -30,3 +30,10 @@ export const deleteData = async (id) => {
   });
   return response.data;
 };
+
+export const getPublic = async () => {
+  const response = await api.get("/events/public");
+  console.log(response)
+  console.log("Public events:", response.data.events);
+  return response.data.events;
+};

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { getAll } from "../services/events";
+import { getAll, getPublic } from "../services/events";
 import { useAuth } from "./AuthContext";
 
 const EventContext = createContext();
@@ -10,16 +10,15 @@ export const EventProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      setEvents([]);
-      setLoading(false);
-      return;
-    }
-
     const loadEvents = async () => {
       setLoading(true);
       try {
-        const data = await getAll();
+        let data = [];
+        if (isAuthenticated) {
+          data = await getAll();
+        } else {
+          data = await getPublic();
+        }
         setEvents(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Failed to fetch events", err);
@@ -27,7 +26,7 @@ export const EventProvider = ({ children }) => {
         setLoading(false);
       }
     };
-
+  
     loadEvents();
   }, [isAuthenticated]);
 
