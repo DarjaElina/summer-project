@@ -106,3 +106,11 @@
 .event-button-box button:nth-child(2):hover {
   background-color: #e53935;
 }
+.seeMore,
+.seeLess {
+  border: none;
+  color: var(--error-color);
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: underline;
+}
