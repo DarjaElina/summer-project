@@ -11,6 +11,7 @@ import CreateEvent from "./pages/CreateEvent";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import "./App.css";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+import Contact from "./pages/Contact";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
+      { path: "contact", element: <Contact /> },
       { path: "*", element: <PageNotFound /> },
       {
         element: <PrivateRoute />,

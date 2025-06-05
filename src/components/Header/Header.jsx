@@ -46,6 +46,14 @@ export default function Header() {
                   About
                 </a>
               </li>
+
+
+              <li>
+                <NavLink to="/contact" className={style.a}>
+                  Contact Us
+                </NavLink>
+              </li>
+
               <li>
                 <a className={style.a} href="#contact">
                   Contact
