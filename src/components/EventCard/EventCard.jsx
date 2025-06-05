@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./EventCard.module.css";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function EventCard({
   id,
@@ -73,15 +75,17 @@ export default function EventCard({
               onChange={onInputEdit}
             />
           </h2>
-          <p>
+          <div>
             <strong>Date:</strong>{" "}
-            <input
-              type="text"
-              name="date"
-              value={eventObj.date}
-              onChange={onInputEdit}
+            <DatePicker
+              selected={new Date(eventObj.date)}
+              onChange={(date) => setEventObj((prev) => ({ ...prev, date }))}
+              showTimeSelect
+              minDate={new Date()}
+              dateFormat="Pp"
+              className={style.datepicker}
             />
-          </p>
+          </div>
           <p>
             <strong>Location:</strong>{" "}
             <input
