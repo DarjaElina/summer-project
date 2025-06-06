@@ -1,13 +1,9 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { Outlet } from "react-router"; // Use react-router-dom
+import { Outlet } from "react-router"; 
 import { Toaster } from "react-hot-toast";
 
 const Root = () => {
-  // You can keep useLocation if you need it for other purposes,
-  // but it's not needed for making the footer always show.
-  // const location = useLocation();
-  // const isHomePage = location.pathname === '/';
 
   return (
     <>
