@@ -1,0 +1,30 @@
+.carouselWrapper {
+  margin-top: 2rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 80%;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .embla__slide {
+    flex: 0 0 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 33.33%;
+  }
+}

@@ -15,7 +15,7 @@ export default function PublicEventCard({ title, location, date, image_url, emoj
       <div className={styles.content}>
         <h3 className={styles.title}>{emoji} {title}</h3>
         <p className={styles.location}><strong>Location:</strong> {location}</p>
-        <button className={styles.button}>Register</button>
+        <button className={styles.button}>Attend</button>
       </div>
     </div>
   );

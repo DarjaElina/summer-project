@@ -1,9 +1,8 @@
 import styles from "./Home.module.css";
-import heroImage from "../assets/h.jpg";
+import heroImage from "../../assets/h.jpg";
 import { Link } from "react-router"; 
-import PublicEventCard from "../components/PublicEventCard/PublicEventCard";
-import { useEvents } from "../context/EventContext";
-import EventCard from "../components/EventCard/EventCard";
+import { useEvents } from "../../context/EventContext";
+import PublicEventSlider from "../../components/PublicEventSlider/PublicEventSlider";
 
 export default function Home() {
   const {events: publicEvents, loading} = useEvents();
@@ -32,24 +31,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       <section>
-        <h2>Upcoming Events</h2>
-        {loading ? (
-          <p>Loading public events...</p>
-        ) : publicEvents.length === 0 ? (
-          <p>No public events available.</p>
-        ) : (
-          publicEvents.map((event) => (
-            <PublicEventCard
-              key={event.id}
-              {...event}
-            />
-          ))
-        )}
-      </section>
-
-      <section style={{ marginTop: "3rem" }}>
         <div>
           <h1>Ready to Create Something</h1>
           <p>
@@ -61,6 +43,22 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <section className={styles.upcomingSection}>
+        <div className={styles.sectionContent}>
+          <h2>✨ Upcoming Events</h2>
+          <p>Join in on unforgettable experiences crafted with care and creativity.</p>
+          {loading ? (
+            <p>Loading public events...</p>
+          ) : publicEvents.length === 0 ? (
+            <p>No public events available.</p>
+          ) : (
+            <PublicEventSlider events={publicEvents} />
+          )}
+        </div>
+      </section>
+
+     
     </div>
   );
 }
