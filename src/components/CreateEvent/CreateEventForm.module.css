@@ -66,16 +66,23 @@
   /* dummy class used to trigger floating labels */
 }
 
-label {
-  position: absolute;
-}
-
 .staticLabel {
   display: block;
   margin-bottom: 0.4rem;
   font-weight: 600;
   font-size: 0.95rem;
   position: relative;
+  top: 0;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+}
+
+.checkboxRow .staticLabel {
+  margin-bottom: 0;
 }
 
 /* Responsive */
