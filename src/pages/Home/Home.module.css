@@ -144,6 +144,7 @@ section {
   text-align: center;
   background-color: var(--background-color);
   color: var(--text-color);
+  padding: 200px;
 }
 
 section:nth-child(2) {
