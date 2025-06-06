@@ -1,5 +1,5 @@
 
-import styles from "./Home.module.css";
+import styles from "../Home/Home.module.css";
 import heroImage from "../../assets/h.jpg";
 import { Link } from "react-router"; 
 import { useEvents } from "../../context/EventContext";

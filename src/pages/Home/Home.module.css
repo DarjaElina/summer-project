@@ -102,8 +102,7 @@ img {
   display: block;
 }
 
-/* Additional merged styles */
-
+/* Call-to-action button styles */
 .ctaButton {
   display: inline-block;
   padding: 12px 32px;
@@ -142,6 +141,7 @@ button {
   margin: 0;
 }
 
+/* General section styling */
 section {
   text-align: center;
   background-color: var(--background-color);
@@ -153,7 +153,6 @@ section:nth-child(2) {
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
-
 
 section div {
   max-width: 1200px;
@@ -173,9 +172,8 @@ section p {
   margin-bottom: 2rem;
   line-height: 1.6;
 }
-<<<<<<< HEAD:src/pages/Home.module.css
-=======
 
+/* Upcoming section from other branch (merged in) */
 .upcomingSection {
   padding: 4rem 1rem;
   background-color: var(--section-background-color);
@@ -202,4 +200,3 @@ section p {
   margin: 0 auto 2rem;
   line-height: 1.6;
 }
->>>>>>> 62ae6b01c1510f9879047b84c1cc6b4ee660a19b:src/pages/Home/Home.module.css
