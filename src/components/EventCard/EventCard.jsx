@@ -41,13 +41,14 @@ export default function EventCard({
   };
 
   const handleDelete = async (id) => {
-    try {
-      await deleteEvent(id);
-      toast.success("Event successfully deleted!");
-    } catch (err) {
-      toast.error("Oops! Something went wrong.");
-      console.error(err);
-    }
+    const confirmed = confirm("Are you sure you want to delete this event?");
+    if (!confirmed) return;
+
+    toast.promise(deleteEvent(id), {
+      loading: "Deleting event...",
+      success: "Event successfully deleted!",
+      error: "Oops! Something went wrong.",
+    });
   };
 
   const onInputEdit = (e) => {
@@ -74,7 +75,7 @@ export default function EventCard({
       toast.success("Event successfully updated!");
       setIsEdit(false);
       Object.assign(initialEventObj, fullEventData);
-      setIsEdit(false);
+      setShowMore(false);
     } catch (err) {
       toast.error("Oops! Something went wrong.");
       console.error(err);
@@ -94,7 +95,9 @@ export default function EventCard({
         {isEdit ? (
           <div className={style["edit-fields"]}>
             <div className={style["form-group"]}>
-              <label className={style["label"]} htmlFor="title"><strong>Title:</strong></label>
+              <label className={style["label"]} htmlFor="title">
+                <strong>Title:</strong>
+              </label>
               <input
                 id="title"
                 type="text"
@@ -105,7 +108,9 @@ export default function EventCard({
             </div>
 
             <div className={style["form-group"]}>
-              <label className={style["label"]} htmlFor="date"><strong>Date:</strong></label>
+              <label className={style["label"]} htmlFor="date">
+                <strong>Date:</strong>
+              </label>
               <DatePicker
                 selected={new Date(eventObj.date)}
                 onChange={(date) =>
@@ -121,7 +126,9 @@ export default function EventCard({
             </div>
 
             <div className={style["form-group"]}>
-              <label className={style["label"]} htmlFor="location"><strong>Location:</strong></label>
+              <label className={style["label"]} htmlFor="location">
+                <strong>Location:</strong>
+              </label>
               {/* Uncomment to enable Mapbox autofill */}
               {/*
               <AddressAutofill accessToken={MAPBOX_TOKEN}>
@@ -146,7 +153,9 @@ export default function EventCard({
             </div>
 
             <div className={style["form-group"]}>
-              <label className={style["label"]} htmlFor="description"><strong>Description:</strong></label>
+              <label className={style["label"]} htmlFor="description">
+                <strong>Description:</strong>
+              </label>
               <textarea
                 id="description"
                 name="description"
@@ -178,37 +187,17 @@ export default function EventCard({
 
             {weather && (
               <div className={style["event-weather"]}>
-                🌤️ <strong>Weather:</strong> {weather.temp}°C, {weather.description}
+                🌤️ <strong>Weather:</strong> {weather.temp}°C,{" "}
+                {weather.description}
               </div>
             )}
-
 
             {showMore && (
               <div className={style["event-button-box"]}>
                 <button onClick={handleEdit}>
                   <FontAwesomeIcon icon={faPenToSquare} /> Edit
                 </button>
-                <button
-                  onClick={() => {
-                    toast.custom((t) => (
-                      <div className={style["confirm-toast"]}>
-                        <p>Are you sure you want to delete this event?</p>
-                        <div className={style["confirm-buttons"]}>
-                          <button
-                            onClick={async () => {
-                              toast.dismiss(t.id);
-                              await handleDelete(id);
-                            }}
-                          >
-                            Yes
-                          </button>
-                          <button onClick={() => toast.dismiss(t.id)}>Cancel</button>
-                        </div>
-                      </div>
-                    ));
-                  }}
-                  disabled={loadingDelete}
-                >
+                <button onClick={() => handleDelete(id)} disabled={loadingDelete}>
                   <FontAwesomeIcon icon={faTrashCan} />{" "}
                   {loadingDelete ? "Deleting..." : "Delete"}
                 </button>
@@ -217,10 +206,14 @@ export default function EventCard({
           </>
         )}
 
-        
         <button
           className={showMore ? style.seeLess : style.seeMore}
-          onClick={() => setShowMore((prev) => !prev)}
+          onClick={() => {
+            if (showMore) {
+              setIsEdit(false);
+            }
+            setShowMore((prev) => !prev);
+          }}
         >
           {showMore ? "Show Less" : "Show More"}
         </button>

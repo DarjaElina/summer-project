@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 export default function Header() {
+  const [showProfile, setShowProfile] = useState(false);
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -47,7 +48,6 @@ export default function Header() {
                 </a>
               </li>
 
-
               <li>
                 <NavLink to="/contact" className={style.a}>
                   Contact Us
@@ -78,17 +78,35 @@ export default function Header() {
                   Calendar
                 </NavLink>
               </li>
-              <li>
-                <button className="button button-gradient" onClick={handleLogout}>
-                  Log Out
-                </button>
+              <li className={style.user_profile_div}>
+                <div
+                  className={style.user_profile_icon}
+                  onClick={() => setShowProfile((prev) => !prev)}
+                >
+                  AB
+                </div>
+                <ul
+                  className={
+                    showProfile
+                      ? style.user_profile_dropdown_block
+                      : style.user_profile_dropdown_none
+                  }
+                >
+                  <li>
+                    <ThemeToggle />
+                  </li>
+                  <li>
+                    <button
+                      className="button button-gradient"
+                      onClick={handleLogout}
+                    >
+                      Log Out
+                    </button>
+                  </li>
+                </ul>
               </li>
             </>
           )}
-
-          <li>
-            <ThemeToggle />
-          </li>
         </ul>
       </nav>
     </header>

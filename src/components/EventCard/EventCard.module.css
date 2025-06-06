@@ -148,7 +148,7 @@ input, textarea {
 }
 
 .confirm-toast {
-  background: white;
+  background: var(--secondary-background-color);
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0,0,0,0.1);
