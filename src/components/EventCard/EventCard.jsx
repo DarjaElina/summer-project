@@ -65,6 +65,13 @@ export default function EventCard({
 
   const saveEdit = async (id) => {
     try {
+      const now = new Date();
+      const selectedDate = new Date(eventObj.date);
+
+      if (selectedDate < now) {
+        toast.error("Date cannot be in the past.");
+        return;
+      }
       const fullEventData = {
         ...eventObj,
         lat: 60.1699,
