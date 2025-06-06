@@ -223,7 +223,6 @@ button:disabled {
   color: var(--warning-color);
 }
 
-/* Side Image styles */
 .sideImage {
   background-image: var(--side-image-url);
   flex: 1 1 40%;
@@ -235,6 +234,7 @@ button:disabled {
   background-position: center;
   background-repeat: no-repeat;
 }
+
 
 @media (max-width: 850px) {
   .sideImage {
