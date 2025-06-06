@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className={style.header}>
       <h2>
-        Event<span>Planner</span>
+        HELSINKI <span>Event Planner</span>
       </h2>
       <nav>
         <ul>
@@ -46,10 +46,12 @@ export default function Header() {
                   About
                 </a>
               </li>
+
+
               <li>
-                <a className={style.a} href="#contact">
-                  Contact
-                </a>
+                <NavLink to="/contact" className={style.a}>
+                  Contact Us
+                </NavLink>
               </li>
             </>
           )}

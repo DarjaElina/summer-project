@@ -38,7 +38,7 @@ export default function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {events.map((event) => (
-        <Marker key={event.id} position={[event.lat, event.lng]} icon={coloredIcon}>
+        <Marker key={event.id} position={[event.lat, event.lon]} icon={coloredIcon}>
           <Popup>
             <strong>{event.title}</strong>
             <br />

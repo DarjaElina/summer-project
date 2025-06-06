@@ -19,11 +19,11 @@ export default function LoginForm() {
     try {
       await login(formData);
       toast.success("Log in successful.");
-      navigate('/events');
+      navigate("/events");
     } catch (errors) {
-      errors.forEach(err => toast.error(err));
+      errors.forEach((err) => toast.error(err));
     } finally {
-      setFormData({ email: "", password: "" })
+      setFormData({ email: "", password: "" });
     }
   };
 
@@ -57,7 +57,11 @@ export default function LoginForm() {
         />
         <label htmlFor="password">Password</label>
       </div>
-      <button type="submit" className="button button-gradient">
+      <button
+        type="submit"
+        className="button button-gradient"
+        disabled={loading}
+      >
         {loading ? "Logging In..." : "Log In"}
       </button>
     </form>
