@@ -25,6 +25,7 @@
   --warning-color: #ffa726;
   --error-color: #ea5455;
   --hero-linear: linear-gradient(135deg, #6c63ff, #ff6584);
+  --section-background-color: #f0f4ff;
 
   /* Font */
   --font-family: "Montserrat", sans-serif;
@@ -47,6 +48,7 @@
   --warning-color: #ffc76b;
   --error-color: #ff6b6b;
   --hero-linear: linear-gradient(135deg, #9a9fff, #ff89a6);
+  --section-background-color: #1a1c2b;
 
   /* Side image */
   --side-image-url: url("https://images.unsplash.com/photo-1595037935521-15ce2282a03e?q=80&w=3087&auto=format&fit=crop");

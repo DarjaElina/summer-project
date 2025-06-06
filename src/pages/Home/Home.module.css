@@ -141,14 +141,19 @@ button {
 }
 
 section {
-  padding: 80px 20px;
   text-align: center;
   background-color: var(--background-color);
   color: var(--text-color);
 }
 
+section:nth-child(2) {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+
 section div {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -166,3 +171,29 @@ section p {
   line-height: 1.6;
 }
 
+.upcomingSection {
+  padding: 4rem 1rem;
+  background-color: var(--section-background-color);
+}
+
+.sectionContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.upcomingSection h2 {
+  font-family: "Edu SA Hand", cursive;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.upcomingSection p {
+  font-size: 1.125rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
