@@ -15,7 +15,6 @@ async function fetchWeather(lat, lon) {
     if (!response.ok) return null;
 
     const data = await response.json();
-    console.log(data)
     return {
       temp: Math.round(data.main.temp),
       description: data.weather[0].description,
@@ -26,7 +25,7 @@ async function fetchWeather(lat, lon) {
   }
 }
 
-export default function EventList() {
+export default function EventList({ CardComponent = EventCard }) {
   const { events, loading } = useEvents();
   const [weatherData, setWeatherData] = useState({});
 
@@ -38,13 +37,11 @@ export default function EventList() {
         const key = `${event.lat},${event.lon}`;
         if (!weatherData[key]) {
           const weather = await fetchWeather(event.lat, event.lon);
-          console.log(event.lat, event.lon)
           if (weather) {
             newWeatherData[key] = weather;
           }
         }
       }
-
       setWeatherData((prev) => ({ ...prev, ...newWeatherData }));
     };
 
@@ -74,10 +71,9 @@ export default function EventList() {
 
   return (
     <div>
-      <h1>Event List</h1>
       <div className={styles["events-container"]}>
         {events.map((event, index) => (
-          <EventCard
+          <CardComponent
             key={index}
             {...event}
             weather={weatherData[`${event.lat},${event.lon}`]}
