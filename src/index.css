@@ -14,8 +14,7 @@
 :root {
   /* Colors */
   --primary-background-color: #f7f9fc;
-  /* --secondary-background-color: #9cafec; */
-  --secondary-background-color: red;
+  --secondary-background-color: #9cafec;
   --primary-color: #6c63ff;
   --secondary-color: #ff6584;
   --text-color: #1e1e2f;
@@ -234,7 +233,6 @@ button:disabled {
   background-position: center;
   background-repeat: no-repeat;
 }
-
 
 @media (max-width: 850px) {
   .sideImage {
