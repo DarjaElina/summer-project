@@ -108,3 +108,12 @@
   outline: 2px solid #c7d2fe;
   outline-offset: 2px;
 }
+
+.event-weather {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

@@ -6,6 +6,11 @@ export const getAll = async () => {
   return response.data.events;
 };
 
+export const getPublicOne = async (id) => {
+  const response = await api.get(`/events/public/${id}`);
+  return response.data.event;
+};
+
 export const create = async (newEvent) => {
   const response = await api.post("/events", newEvent, {
     headers: {
@@ -29,3 +34,7 @@ export const getPublic = async () => {
   console.log("Public events:", response.data.events);
   return response.data.events;
 };
+
+export const getOne = async () => {
+  return "Fetched";
+}
