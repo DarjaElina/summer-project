@@ -6,7 +6,6 @@ import { useDeleteEvent } from "../../hooks/useDeleteEvent";
 import { useUpdateEvent } from "../../hooks/useUpdateEvent";
 import toast from "react-hot-toast";
 import DatePicker from "react-datepicker";
-// import { AddressAutofill } from "@mapbox/search-js-react";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -192,7 +191,7 @@ export default function EventCard({
               <strong>Date:</strong> {formattedDate}
             </p>
             <p>
-              <strong>Location:</strong> {location}
+              📍<strong>Location:</strong> {location}
             </p>
             <p>{description}</p>
 

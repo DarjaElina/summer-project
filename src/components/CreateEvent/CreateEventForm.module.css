@@ -78,11 +78,15 @@
 .checkboxRow {
   display: flex;
   align-items: center;
-  gap: 0.5rem; 
+  gap: 0.5rem;
 }
 
 .checkboxRow .staticLabel {
   margin-bottom: 0;
+}
+
+.emojiTitleWrapper {
+  display: flex;
 }
 
 /* Responsive */
@@ -96,11 +100,3 @@
     padding: 2rem;
   }
 }
-
-.formError {
-  color: #e63946;
-  font-size: 0.9rem;
-  margin-top: 4px;
-}
-
-
