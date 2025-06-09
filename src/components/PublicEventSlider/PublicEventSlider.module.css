@@ -10,30 +10,22 @@
 
 .embla__container {
   display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
 }
 
 .embla__slide {
-  flex: 0 0 80%;
-  padding: 0 0.5rem;
+  flex: 0 0 100%;
+  padding: 0;
 }
 
-.a {
-  position: relative;
-  color: var(--text-color);
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding-bottom: 4px;
-  transition: color 0.3s ease, font-size 0.3s ease;
+@media (min-width: 600px) {
+  .embla__slide {
+    flex: 0 0 70%;
+  }
 }
 
-.a:hover {
-  color: var(--primary-color);
-  font-size: 1.3rem;
-  text-decoration: none;
-}
-
-
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .embla__slide {
     flex: 0 0 50%;
   }
@@ -42,5 +34,34 @@
 @media (min-width: 1024px) {
   .embla__slide {
     flex: 0 0 33.33%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .embla__slide {
+    flex: 0 0 25%;
+  }
+}
+
+.a {
+  display: inline-block;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.a:hover {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .a {
+    font-size: 1rem;
   }
 }

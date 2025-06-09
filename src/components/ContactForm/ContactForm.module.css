@@ -72,3 +72,18 @@ button:hover {
   font-weight: 600;
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .form {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    font-size: 0.95rem;
+  }
+}
