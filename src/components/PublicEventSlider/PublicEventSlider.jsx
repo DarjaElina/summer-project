@@ -1,12 +1,13 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { Link } from  "react-router-dom";
+import { Link } from "react-router-dom";
 import PublicEventCard from "../PublicEventCard/PublicEventCard";
 import styles from "./PublicEventSlider.module.css";
 
 const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
 
 export default function PublicEventSlider({ events }) {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 480;
   const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
@@ -14,7 +15,7 @@ export default function PublicEventSlider({ events }) {
       align: "start",
       skipSnaps: false,
     },
-    [autoplay]
+    isMobile ? [] : [autoplay]
   );
 
   return (
@@ -28,9 +29,9 @@ export default function PublicEventSlider({ events }) {
           ))}
         </div>
       </div>
-        <Link to="/events/public" className={styles.a}>
-          Browse Events
-        </Link>
+      <Link to="/events/public" className={styles.a}>
+        Browse Events
+      </Link>
     </div>
   );
 }

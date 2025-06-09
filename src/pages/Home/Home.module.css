@@ -195,3 +195,79 @@ section p {
   margin: 0 auto 1.5rem;
   line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .heroContent h1 {
+    font-size: 1.75rem;
+  }
+
+  .heroContent p {
+    font-size: 1.1rem;
+  }
+
+  .statsContainer {
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 30px;
+    align-items: center;
+  }
+
+  .statCard {
+    width: 80%;
+    padding: 12px;
+  }
+
+  section:nth-child(2) {
+    padding: 60px 20px;
+  }
+
+  section h1 {
+    font-size: 2rem;
+  }
+
+  section p {
+    font-size: 1rem;
+  }
+
+  .ctaButton {
+    font-size: 1rem;
+    padding: 10px 24px;
+  }
+
+  .upcomingSection {
+    padding: 2rem 1rem;
+  }
+
+  .upcomingSection h2 {
+    font-size: 1.75rem;
+  }
+
+  .upcomingSection p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent h1 {
+    font-size: 1.5rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+  }
+
+  .statCard {
+    min-width: unset;
+    width: 90%;
+  }
+
+  .ctaButton {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
