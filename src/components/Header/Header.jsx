@@ -78,16 +78,16 @@ export default function Header() {
                   Calendar
                 </NavLink>
               </li>
-
               <li>
-                <li>
-                  <button
-                    className="button button-gradient"
-                    onClick={handleLogout}
-                  >
-                    Log Out
-                  </button>
-                </li>
+                <ThemeToggle />
+              </li>
+              <li>
+                <button
+                  className="button button-gradient"
+                  onClick={handleLogout}
+                >
+                  Log Out
+                </button>
               </li>
             </>
           ) : (
