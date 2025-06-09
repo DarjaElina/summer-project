@@ -194,6 +194,17 @@ button:disabled {
   background-repeat: no-repeat;
 }
 
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkboxRow .staticLabel {
+  margin-bottom: 0;
+  position: unset;
+}
+
 @media (max-width: 1024px) {
   form {
     max-width: 90%;

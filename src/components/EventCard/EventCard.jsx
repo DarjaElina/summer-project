@@ -17,6 +17,7 @@ export default function EventCard({
   date,
   image_url,
   emoji,
+  is_public,
   weather,
 }) {
   const d = new Date(date);
@@ -27,7 +28,7 @@ export default function EventCard({
   const { deleteEvent, loading: loadingDelete } = useDeleteEvent();
   const { updateEvent, loading: loadingUpdate } = useUpdateEvent();
 
-  const initialEventObj = { title, description, location, date, image_url };
+  const initialEventObj = { title, description, location, date, image_url, is_public };
   const [eventObj, setEventObj] = useState(initialEventObj);
   const [isEdit, setIsEdit] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -170,6 +171,20 @@ export default function EventCard({
               />
             </div>
 
+            <div className="checkboxRow">
+              <label className={`${style["label"]} staticLabel`} htmlFor="is_public">
+                <strong>Public:</strong>
+              </label>
+              <input
+                id="is_public"
+                type="checkbox"
+                checked={eventObj.is_public}
+                onChange={() =>
+                  setEventObj((prev) => ({ ...prev, is_public: !prev.is_public }))
+                }
+              />
+            </div>
+
             {showMore && (
               <div className={style["event-button-box"]}>
                 <button
@@ -187,9 +202,8 @@ export default function EventCard({
             <h2 className={style["event-title"]}>
               {emoji} {title}
             </h2>
-            <p><strong>Date:</strong> {formattedDate}</p>
+            <p>📅 <strong>Date:</strong> {formattedDate}</p>
             <p>📍<strong>Location:</strong> {location}</p>
-            <p>{description}</p>
 
             {weather && (
               <div className={style["event-weather"]}>
@@ -199,15 +213,15 @@ export default function EventCard({
             )}
 
             {showMore && (
-              <div className={style["event-button-box"]}>
-                <button onClick={handleEdit}>
-                  <FontAwesomeIcon icon={faPenToSquare} /> Edit
-                </button>
-                <button onClick={() => handleDelete(id)} disabled={loadingDelete}>
-                  <FontAwesomeIcon icon={faTrashCan} />{" "}
-                  {loadingDelete ? "Deleting..." : "Delete"}
-                </button>
-              </div>
+                <><p>{description}</p><div className={style["event-button-box"]}>
+                  <button onClick={handleEdit}>
+                    <FontAwesomeIcon icon={faPenToSquare} /> Edit
+                  </button>
+                  <button onClick={() => handleDelete(id)} disabled={loadingDelete}>
+                    <FontAwesomeIcon icon={faTrashCan} />{" "}
+                    {loadingDelete ? "Deleting..." : "Delete"}
+                  </button>
+                </div></>
             )}
           </>
         )}
