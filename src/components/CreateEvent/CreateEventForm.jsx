@@ -5,20 +5,14 @@ import { useCreateEvent } from '../../hooks/useCreateEvent';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
-import { AddressAutofill } from '@mapbox/search-js-react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router';
 
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
-
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
   location: Yup.string().required('Location is required'),
-  date: Yup
-    .date()
-    .required('Date is required')
-    .min(new Date(), 'Date must be in the future'),
+  date: Yup.date().required('Date is required').min(new Date(), 'Date must be in the future'),
   type: Yup.string().required('Type is required'),
   description: Yup.string().required('Description is required'),
   image: Yup.mixed().required('Image is required'),
@@ -31,6 +25,7 @@ const CreateEventForm = () => {
 
   const initialValues = {
     title: '',
+    emoji: '',
     location: '',
     date: new Date(),
     type: 'general',
@@ -39,28 +34,14 @@ const CreateEventForm = () => {
     is_public: false,
   };
 
-  // const getCoordsFromAddress = async (address) => {
-  //   const res = await fetch(
-  //     `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${MAPBOX_TOKEN}`
-  //   );
-  //   const data = await res.json();
-
-  //   if (data.features && data.features.length > 0) {
-  //     const [lng, lat] = data.features[0].center;
-  //     return { lat, lng };
-  //   }
-  //   return null;
-  // };
-
   const handleSubmit = async (values, { resetForm }) => {
-    // const coords = await getCoordsFromAddress(values.location);
-    // if (!coords) {
-    //   toast.error('Invalid address! Please select a valid location.');
-    //   return;
-    // }
-
     const data = new FormData();
+
+    const fullTitle = values.emoji ? `${values.emoji} ${values.title}` : values.title;
+
+    data.append('title', fullTitle);
     Object.entries(values).forEach(([key, val]) => {
+      if (key === 'title' || key === 'emoji') return; // already handled
       if (val !== undefined && val !== null) {
         if (key === 'date') {
           const mysqlDate = val.toISOString().slice(0, 19).replace('T', ' ');
@@ -73,13 +54,8 @@ const CreateEventForm = () => {
       }
     });
 
-    // data.append('lat', coords.lat);
-    // data.append('lon', coords.lng);
-
     data.append('lat', 60.1699);
     data.append('lon', 24.9384);
-
-    console.log(data.get('is_public'));
 
     try {
       await createEvent(data);
@@ -108,15 +84,33 @@ const CreateEventForm = () => {
             <Form className={styles.form}>
               <div className={styles.inputGroup}>
                 <label className={styles.staticLabel} htmlFor="title">Title ✱</label>
-                <Field id="title" name="title" type="text" className={values.title ? 'filled' : ''} />
+                <div className={styles.emojiTitleWrapper}>
+                  <Field
+                    id="title"
+                    name="title"
+                    type="text"
+                    placeholder=""
+                    className={`${styles.titleInput} ${values.title ? 'filled' : ''}`}
+                  /> 
+                  <Field as="select" name="emoji" className={styles.emojiDropdown}>
+                    <option value="">🌐</option>
+                    <option value="🎉">🎉</option>
+                    <option value="🏃">🏃</option>
+                    <option value="🎨">🎨</option>
+                    <option value="🎵">🎵</option>
+                    <option value="🍲">🍲</option>
+                    <option value="📚">📚</option>
+                    <option value="👨‍👩‍👧">👨‍👩‍👧</option>
+                    <option value="🌍">🌍</option>
+                    <option value="🥳">🥳</option>
+                  </Field>
+                </div>
                 <ErrorMessage name="title" component="div" className={styles.formError} />
               </div>
 
               <div className={styles.inputGroup}>
                 <label className={styles.staticLabel} htmlFor="location">Location ✱</label>
-                {/* <AddressAutofill accessToken={MAPBOX_TOKEN}> */}
                 <Field id="location" name="location" type="text" autoComplete="address-line1" style={{ width: '100%' }} />
-                {/* </AddressAutofill> */}
                 <ErrorMessage name="location" component="div" className={styles.formError} />
               </div>
 

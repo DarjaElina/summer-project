@@ -12,7 +12,6 @@ export default function Footer() {
         <div className={style.column}>
           <h4>Links</h4>
           <ul>
-            <li><a href="#">Courses</a></li>
             <li><a href="#">Events</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
