@@ -93,7 +93,7 @@ const CreateEventForm = () => {
                     className={`${styles.titleInput} ${values.title ? 'filled' : ''}`}
                   /> 
                   <Field as="select" name="emoji" className={styles.emojiDropdown}>
-                    <option value="">🌐</option>
+                    <option value="🌐">🌐</option>
                     <option value="🎉">🎉</option>
                     <option value="🏃">🏃</option>
                     <option value="🎨">🎨</option>
