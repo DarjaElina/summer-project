@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import heroImage from "../../assets/h.jpg";
-import { Link } from "react-router"; 
+import { Link } from "react-router-dom"; 
 import { useEvents } from "../../context/EventContext";
 import PublicEventSlider from "../../components/PublicEventSlider/PublicEventSlider";
 

@@ -12,6 +12,8 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import "./App.css";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
 import Contact from "./pages/Contact";
+import EventDetails from "./pages/EventDetails/EventDetails";
+import PublicEvents from "./pages/PublicEvents";
 
 
 const router = createBrowserRouter([
@@ -24,6 +26,8 @@ const router = createBrowserRouter([
       { path: "signup", element: <SignUp /> },
       { path: "contact", element: <Contact /> },
       { path: "*", element: <PageNotFound /> },
+      { path: "events/public/", element: <PublicEvents /> },
+      { path: "events/public/:id", element: <EventDetails /> },
       {
         element: <PrivateRoute />,
         children: [

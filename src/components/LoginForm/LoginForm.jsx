@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./LoginForm.module.css";
 import useLogin from "../../hooks/useLogin";
-import { useNavigate } from "react-router";
+import { useNavigate } from  "react-router-dom";
 import { toast } from "react-hot-toast";
 
 export default function LoginForm() {
@@ -29,7 +29,7 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form} noValidate>
-      <h3>Log In</h3>
+      <h2>Log In</h2>
       <div className={styles.inputGroup}>
         <input
           id="email"

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { AddressAutofill } from '@mapbox/search-js-react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router';
+import { useNavigate } from  "react-router-dom";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 

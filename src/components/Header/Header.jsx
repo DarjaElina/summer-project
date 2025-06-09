@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from "./Header.module.css";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from  "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
