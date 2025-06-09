@@ -49,6 +49,8 @@ export default function EventCard({
       success: "Event successfully deleted!",
       error: "Oops! Something went wrong.",
     });
+
+    setShowMore(false);
   };
 
   const onInputEdit = (e) => {
