@@ -239,4 +239,20 @@ button:disabled {
     height: 200px;
     flex: unset;
   }
+  form {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 0.95rem;
+    padding: 0.8rem 0;
+  }
+
+  .button {
+    font-size: 0.95rem;
+    padding: 0.5em 1em;
+  }
 }
