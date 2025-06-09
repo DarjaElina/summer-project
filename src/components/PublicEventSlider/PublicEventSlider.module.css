@@ -17,6 +17,22 @@
   padding: 0 0.5rem;
 }
 
+.a {
+  position: relative;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.a:hover {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+
 @media (min-width: 640px) {
   .embla__slide {
     flex: 0 0 50%;

@@ -1,12 +1,14 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { Outlet } from "react-router"; 
+import { Outlet } from "react-router-dom"; 
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 const Root = () => {
 
   return (
     <>
+      <ScrollToTop/>
       <Header/>
       <main>
         <Outlet />

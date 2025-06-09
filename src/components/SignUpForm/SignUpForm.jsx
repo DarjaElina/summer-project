@@ -51,7 +51,7 @@ export default function SignUpForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form} noValidate>
-      <h3>Sign Up</h3>
+      <h2>Sign Up</h2>
       <div className={styles.inputGroup}>
         <input
           id="name"

@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router';
+import { useNavigate } from  "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
