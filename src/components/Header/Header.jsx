@@ -3,9 +3,8 @@ import style from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-// import logo from "../../../public/logo.png";
-import logo from "../../../public/meetora.png";
-// import logo2 from "../../../public/Logo.jpg";
+import logo from "../../../public/logo.png";
+// import logo from "../../../public/meetora.png";
 
 export default function Header() {
   const { isAuthenticated, logout } = useAuth();
