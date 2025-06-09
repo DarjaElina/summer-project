@@ -38,6 +38,19 @@
 .noEventsContainer p {
   margin: 0;
 }
+/* Search Goes here */
+.search {
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.search input {
+  width: 70%;
+}
+.search select {
+  width: 20%;
+}
 
 @media (max-width: 600px) {
   .events-container {
