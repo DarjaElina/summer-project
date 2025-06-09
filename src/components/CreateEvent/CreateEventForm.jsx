@@ -25,7 +25,7 @@ const CreateEventForm = () => {
 
   const initialValues = {
     title: '',
-    emoji: '',
+    emoji: '🌐',
     location: '',
     date: new Date(),
     type: 'general',
