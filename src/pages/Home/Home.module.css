@@ -102,6 +102,7 @@ img {
   display: block;
 }
 
+/* Call-to-action button styles */
 .ctaButton {
   display: inline-block;
   padding: 12px 32px;
@@ -140,6 +141,7 @@ button {
   margin: 0;
 }
 
+/* General section styling */
 section {
   text-align: center;
   background-color: var(--background-color);
@@ -149,7 +151,6 @@ section {
 section:nth-child(2) {
   padding: 100px;
 }
-
 
 section div {
   max-width: 1200px;
@@ -170,6 +171,7 @@ section p {
   line-height: 1.6;
 }
 
+/* Upcoming section from other branch (merged in) */
 .upcomingSection {
   padding: 4rem 1rem;
   background-color: var(--section-background-color);

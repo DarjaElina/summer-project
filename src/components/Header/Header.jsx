@@ -93,12 +93,12 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
+                <ThemeToggle />
+              </li>
+              <li>
                 <button
                   className="button button-gradient"
-                  onClick={() => {
-                    handleLogout();
-                    closeSidebar();
-                  }}
+                  onClick={handleLogout}
                 >
                   Log Out
                 </button>
