@@ -41,7 +41,7 @@ const CreateEventForm = () => {
 
     data.append('title', fullTitle);
     Object.entries(values).forEach(([key, val]) => {
-      if (key === 'title' || key === 'emoji') return; // already handled
+      if (key === 'title' || key === 'emoji') return;
       if (val !== undefined && val !== null) {
         if (key === 'date') {
           const mysqlDate = val.toISOString().slice(0, 19).replace('T', ' ');
