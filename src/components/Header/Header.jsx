@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import style from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -8,6 +8,7 @@ export default function Header() {
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarRef = useRef(null);
 
   const handleLogout = () => {
     try {
@@ -19,6 +20,21 @@ export default function Header() {
   };
 
   const closeSidebar = () => setSidebarOpen(false);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        sidebarOpen
+      ) {
+        setSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [sidebarOpen]);
 
   return (
     <header className={style.header}>
@@ -34,7 +50,10 @@ export default function Header() {
         ☰
       </button>
 
-      <nav className={`${style.nav} ${sidebarOpen ? style.open : ""}`}>
+      <nav
+        ref={sidebarRef}
+        className={`${style.nav} ${sidebarOpen ? style.open : ""}`}
+      >
         <button className={style.closeButton} onClick={closeSidebar}>
           ×
         </button>
@@ -57,9 +76,9 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <a href="#about" className={style.a} onClick={closeSidebar}>
-                  About
-                </a>
+                <NavLink to="/events/public" className={style.a} onClick={closeSidebar}>
+                  Events
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/contact" className={style.a} onClick={closeSidebar}>

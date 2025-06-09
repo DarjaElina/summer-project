@@ -69,7 +69,6 @@
   font-size: 0.95rem;
   color: var(--text-color);
   display: flex;
-  align-items: center;
   gap: 6px;
 }
 .seeMore,

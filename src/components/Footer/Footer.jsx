@@ -8,7 +8,7 @@ export default function Footer() {
         <div className={style.column}>
           <h4>About Us</h4>
 
-          <p>We are a leading provider of event planning and management solutions. Using state-of-the-art software applications, we enable you to track your favorite events with ease to use and create and share your own event invitations effortlessly..</p>
+          <p>We are a leading provider of event planning and management solutions. Using state-of-the-art software applications, we enable you to track your favorite events with ease to use and create and share your own event invitations effortlessly.</p>
         </div>
         <div className={style.column}>
           <h4>Links</h4>
