@@ -15,19 +15,11 @@ export const create = async (newEvent) => {
   return response.data;
 };
 export const update = async (id, updatedEvent) => {
-  const response = await api.patch(`/events/${id}`, updatedEvent, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const response = await api.put(`/events/${id}`, updatedEvent);
   return response.data;
 };
-export const deleteData = async (id) => {
-  const response = await api.delete(`/events/${id}`, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+export const remove = async (id) => {
+  const response = await api.delete(`/events/${id}`)
   return response.data;
 };
 

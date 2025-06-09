@@ -14,7 +14,8 @@
 :root {
   /* Colors */
   --primary-background-color: #f7f9fc;
-  --secondary-background-color: #ffffff;
+  /* --secondary-background-color: #9cafec; */
+  --secondary-background-color: red;
   --primary-color: #6c63ff;
   --secondary-color: #ff6584;
   --text-color: #1e1e2f;
@@ -25,6 +26,7 @@
   --warning-color: #ffa726;
   --error-color: #ea5455;
   --hero-linear: linear-gradient(135deg, #6c63ff, #ff6584);
+  --section-background-color: #f0f4ff;
 
   /* Font */
   --font-family: "Montserrat", sans-serif;
@@ -47,6 +49,7 @@
   --warning-color: #ffc76b;
   --error-color: #ff6b6b;
   --hero-linear: linear-gradient(135deg, #9a9fff, #ff89a6);
+  --section-background-color: #1a1c2b;
 
   /* Side image */
   --side-image-url: url("https://images.unsplash.com/photo-1595037935521-15ce2282a03e?q=80&w=3087&auto=format&fit=crop");
@@ -220,7 +223,6 @@ button:disabled {
   color: var(--warning-color);
 }
 
-/* Side Image styles */
 .sideImage {
   background-image: var(--side-image-url);
   flex: 1 1 40%;
@@ -232,6 +234,7 @@ button:disabled {
   background-position: center;
   background-repeat: no-repeat;
 }
+
 
 @media (max-width: 850px) {
   .sideImage {
