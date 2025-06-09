@@ -1,15 +1,14 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { Outlet } from "react-router-dom"; 
+import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 const Root = () => {
-
   return (
     <>
-      <ScrollToTop/>
-      <Header/>
+      <ScrollToTop />
+      <Header />
       <main>
         <Outlet />
         <Toaster
@@ -17,20 +16,20 @@ const Root = () => {
           toastOptions={{
             duration: 4000,
             style: {
-              fontWeight: '500',
-              borderRadius: '12px',
-              padding: '16px',
+              fontWeight: "500",
+              borderRadius: "12px",
+              padding: "16px",
             },
             success: {
-              icon: '✅',
+              icon: "✅",
             },
             error: {
-              icon: '❌',
+              icon: "❌",
             },
           }}
         />
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 };

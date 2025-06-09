@@ -1,12 +1,11 @@
-
 import styles from "../Home/Home.module.css";
 import heroImage from "../../assets/h.jpg";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import { useEvents } from "../../context/EventContext";
 import PublicEventSlider from "../../components/PublicEventSlider/PublicEventSlider";
 
 export default function Home() {
-  const {events: publicEvents, loading} = useEvents();
+  const { events: publicEvents, loading } = useEvents();
   const stats = [
     { label: "Event Planned ", number: "850 +" },
     { label: "Client Satisfaction ", number: "98 %" },
@@ -48,7 +47,10 @@ export default function Home() {
       <section className={styles.upcomingSection}>
         <div className={styles.sectionContent}>
           <h2>✨ Upcoming Events</h2>
-          <p>Join in on unforgettable experiences crafted with care and creativity.</p>
+          <p>
+            Join in on unforgettable experiences crafted with care and
+            creativity.
+          </p>
           {loading ? (
             <p>Loading public events...</p>
           ) : publicEvents.length === 0 ? (
@@ -58,10 +60,6 @@ export default function Home() {
           )}
         </div>
       </section>
-
-     
     </div>
   );
 }
-
-

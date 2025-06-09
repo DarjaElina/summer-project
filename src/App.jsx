@@ -15,7 +15,6 @@ import Contact from "./pages/Contact";
 import EventDetails from "./pages/EventDetails/EventDetails";
 import PublicEvents from "./pages/PublicEvents";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,7 +47,7 @@ const router = createBrowserRouter([
             element: <MapPage />,
           },
           {
-            path: "themetoggle", 
+            path: "themetoggle",
             element: <ThemeToggle />,
           },
         ],

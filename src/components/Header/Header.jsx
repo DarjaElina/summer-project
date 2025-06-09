@@ -3,6 +3,9 @@ import style from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
+// import logo from "../../../public/logo.png";
+import logo from "../../../public/meetora.png";
+// import logo2 from "../../../public/Logo.jpg";
 
 export default function Header() {
   const { isAuthenticated, logout } = useAuth();
@@ -38,9 +41,11 @@ export default function Header() {
 
   return (
     <header className={style.header}>
-      <h2>
-        HELSINKI <span>Event Planner</span>
-      </h2>
+      <div className={style.logo_box}>
+        <a href="/">
+          <img src={logo} className={style.logo_img} />
+        </a>
+      </div>
 
       <button
         className={style.hamburger}
@@ -66,7 +71,11 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/signup" className={style.a} onClick={closeSidebar}>
+                <NavLink
+                  to="/signup"
+                  className={style.a}
+                  onClick={closeSidebar}
+                >
                   Sign Up
                 </NavLink>
               </li>
@@ -76,12 +85,20 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/events/public" className={style.a} onClick={closeSidebar}>
+                <NavLink
+                  to="/events/public"
+                  className={style.a}
+                  onClick={closeSidebar}
+                >
                   Events
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className={style.a} onClick={closeSidebar}>
+                <NavLink
+                  to="/contact"
+                  className={style.a}
+                  onClick={closeSidebar}
+                >
                   Contact Us
                 </NavLink>
               </li>
@@ -92,12 +109,21 @@ export default function Header() {
           ) : (
             <>
               <li>
-                <NavLink to="/events" className={style.a} end onClick={closeSidebar}>
+                <NavLink
+                  to="/events"
+                  className={style.a}
+                  end
+                  onClick={closeSidebar}
+                >
                   My Events
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/events/create" className={style.a} onClick={closeSidebar}>
+                <NavLink
+                  to="/events/create"
+                  className={style.a}
+                  onClick={closeSidebar}
+                >
                   Create Event
                 </NavLink>
               </li>
@@ -107,7 +133,11 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Calendar" className={style.a} onClick={closeSidebar}>
+                <NavLink
+                  to="/Calendar"
+                  className={style.a}
+                  onClick={closeSidebar}
+                >
                   Calendar
                 </NavLink>
               </li>
