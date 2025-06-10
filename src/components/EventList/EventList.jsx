@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import EventCard from "../EventCard/EventCard";
 import { useEvents } from "../../context/EventContext";
 import styles from "./EventList.module.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { FaRegCalendarMinus } from "react-icons/fa";
+
 const API_KEY = "40850c8658af868d2f8d372ba505c430";
+
+const MemoizedEventCard = memo(EventCard);
 
 async function fetchWeather(lat, lon) {
   try {
@@ -24,34 +27,69 @@ async function fetchWeather(lat, lon) {
   }
 }
 
-export default function EventList({ CardComponent = EventCard }) {
+export default function EventList({ CardComponent = MemoizedEventCard }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchTermSelect, setSearchTermSelect] = useState("");
-  const [filteredEvents, setFilterdEvents] = useState([]);
-
+  const [searchTermSelect, setSearchTermSelect] = useState("all");
   const { events, loading } = useEvents();
   const [weatherData, setWeatherData] = useState({});
 
+  const filteredEvents = useMemo(() => {
+    const searchTermLower = searchTerm.toLowerCase();
+    return events.filter((data) => {
+      const title = data.title.toLowerCase();
+      const location = data.location?.toLowerCase() || "";
+
+      const matchesSearch =
+        title.includes(searchTermLower) || location.includes(searchTermLower);
+
+      const matchesType =
+        searchTermSelect.toLowerCase() === "all" ||
+        data.type === searchTermSelect;
+
+      return matchesSearch && matchesType;
+    });
+  }, [searchTerm, searchTermSelect, events]);
+
+  const getWeatherForEvent = useCallback(
+    (event) => weatherData[`${event.lat},${event.lon}`],
+    [weatherData]
+  );
+
   useEffect(() => {
     const loadWeather = async () => {
-      const newWeatherData = {};
+      const weatherUpdates = {};
+      const weatherPromises = [];
 
-      for (const event of events) {
+      for (const event of filteredEvents) {
         const key = `${event.lat},${event.lon}`;
         if (!weatherData[key]) {
-          const weather = await fetchWeather(event.lat, event.lon);
-          if (weather) {
-            newWeatherData[key] = weather;
-          }
+          weatherPromises.push(
+            fetchWeather(event.lat, event.lon).then((weather) => {
+              if (weather) weatherUpdates[key] = weather;
+            })
+          );
         }
       }
-      setWeatherData((prev) => ({ ...prev, ...newWeatherData }));
+
+      await Promise.all(weatherPromises);
+
+      if (Object.keys(weatherUpdates).length > 0) {
+        setWeatherData((prev) => ({ ...prev, ...weatherUpdates }));
+      }
     };
 
-    if (events.length > 0) {
+    if (filteredEvents.length > 0) {
       loadWeather();
     }
-  }, [events]);
+  }, [filteredEvents]);
+
+  const handleInput = useCallback((e) => {
+    setSearchTerm(e.target.value);
+  }, []);
+
+  const handleSelect = useCallback((e) => {
+    setSearchTermSelect(e.target.value);
+  }, []);
 
   if (loading) {
     return (
@@ -72,29 +110,6 @@ export default function EventList({ CardComponent = EventCard }) {
     );
   }
 
-  const handleInput = (e) => {
-    let searchText = e.target.value;
-    setSearchTerm(searchText);
-  };
-  const handleSelect = (e) => {
-    let searchSelect = e.target.value;
-    setSearchTermSelect(searchSelect);
-  };
-
-  useEffect(() => {
-    let filteredEventsInput = events.filter((data) => {
-      let title = data.title.toLowerCase();
-      let location = data.location.toLowerCase();
-      return (
-        (title.includes(searchTerm.toLowerCase()) ||
-          location.includes(searchTerm.toLowerCase())) &&
-        (searchTermSelect.toLowerCase() == "all"
-          ? data
-          : searchTermSelect === "" || data.type === searchTermSelect)
-      );
-    });
-    setFilterdEvents(filteredEventsInput);
-  }, [searchTerm, searchTermSelect, events]);
   return (
     <div>
       <div className={styles.search}>
@@ -102,8 +117,9 @@ export default function EventList({ CardComponent = EventCard }) {
           type="text"
           placeholder="Search by title,location"
           onChange={handleInput}
+          value={searchTerm}
         />
-        <select name="" id="" onChange={handleSelect}>
+        <select value={searchTermSelect} onChange={handleSelect}>
           <option value="all">All</option>
           <option value="general">General</option>
           <option value="course">Course</option>
@@ -118,14 +134,14 @@ export default function EventList({ CardComponent = EventCard }) {
         </select>
       </div>
       <div className={styles["events-container"]}>
-        {filteredEvents.length == 0 ? (
+        {filteredEvents.length === 0 ? (
           <h1>No data found</h1>
         ) : (
-          filteredEvents.map((event, index) => (
+          filteredEvents.map((event) => (
             <CardComponent
-              key={index}
+              key={`${event.id}-${event.lat}-${event.lon}`}
               {...event}
-              weather={weatherData[`${event.lat},${event.lon}`]}
+              weather={getWeatherForEvent(event)}
             />
           ))
         )}
