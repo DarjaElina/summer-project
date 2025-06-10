@@ -6,6 +6,7 @@ import { useDeleteEvent } from "../../hooks/useDeleteEvent";
 import { useUpdateEvent } from "../../hooks/useUpdateEvent";
 import toast from "react-hot-toast";
 import DatePicker from "react-datepicker";
+import { SearchBox } from "@mapbox/search-js-react";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -74,8 +75,6 @@ export default function EventCard({
       }
       const fullEventData = {
         ...eventObj,
-        lat: 60.1699,
-        lon: 24.9384,
       };
 
       await updateEvent(id, fullEventData);
@@ -136,26 +135,31 @@ export default function EventCard({
               <label className={style["label"]} htmlFor="location">
                 <strong>Location:</strong>
               </label>
-              {/* Uncomment to enable Mapbox autofill */}
-              {/*
-              <AddressAutofill accessToken={MAPBOX_TOKEN}>
-                <input
-                  id="location"
-                  type="text"
-                  name="location"
-                  value={eventObj.location}
-                  onChange={onInputEdit}
-                  autoComplete="address-line1"
-                />
-              </AddressAutofill>
-              */}
-              <input
+              <SearchBox
                 id="location"
-                type="text"
                 name="location"
+                options={{ country: "FI", types: "address, street, place" }}
                 value={eventObj.location}
-                onChange={onInputEdit}
-                autoComplete="address-line1"
+                accessToken={MAPBOX_TOKEN}
+                onChange={(input) => {
+                  setEventObj((prev) => ({
+                    ...prev,
+                    location: input,
+                    lat: null,
+                    lon: null,
+                  }));
+                }}
+                onRetrieve={(data) => {
+                  const feature = data.features?.[0];
+                  if (!feature) return;
+
+                  setEventObj((prev) => ({
+                    ...prev,
+                    location: feature.properties.full_address,
+                    lat: feature.properties.coordinates.latitude,
+                    lon: feature.properties.coordinates.longitude,
+                  }));
+                }}
               />
             </div>
 

@@ -7,15 +7,26 @@ import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from  "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { SearchBox } from "@mapbox/search-js-react";
+
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
-  location: Yup.string().required('Location is required'),
+  location: Yup.string().required(''),
   date: Yup.date().required('Date is required').min(new Date(), 'Date must be in the future'),
   type: Yup.string().required('Type is required'),
   description: Yup.string().required('Description is required'),
   image: Yup.mixed().required('Image is required'),
+  lat: Yup.number()
+    .required('Start typing to select a valid location from the list')
+    .min(60)
+    .max(65),
+  lon: Yup.number()
+    .required('')
+    .min(20)
+    .max(30)
 });
 
 const CreateEventForm = () => {
@@ -32,11 +43,12 @@ const CreateEventForm = () => {
     description: '',
     image: null,
     is_public: false,
+    lat: null,
+    lon: null
   };
 
   const handleSubmit = async (values, { resetForm }) => {
     const data = new FormData();
-
     const fullTitle = values.emoji ? `${values.emoji} ${values.title}` : values.title;
 
     data.append('title', fullTitle);
@@ -53,9 +65,6 @@ const CreateEventForm = () => {
         }
       }
     });
-
-    data.append('lat', 60.1699);
-    data.append('lon', 24.9384);
 
     try {
       await createEvent(data);
@@ -89,9 +98,9 @@ const CreateEventForm = () => {
                     id="title"
                     name="title"
                     type="text"
-                    placeholder=""
+                    placeholder="Enter event title"
                     className={`${styles.titleInput} ${values.title ? 'filled' : ''}`}
-                  /> 
+                  />
                   <Field as="select" name="emoji" className={styles.emojiDropdown}>
                     <option value="🌐">🌐</option>
                     <option value="🎉">🎉</option>
@@ -110,8 +119,24 @@ const CreateEventForm = () => {
 
               <div className={styles.inputGroup}>
                 <label className={styles.staticLabel} htmlFor="location">Location ✱</label>
-                <Field id="location" name="location" type="text" autoComplete="address-line1" style={{ width: '100%' }} />
-                <ErrorMessage name="location" component="div" className={styles.formError} />
+                <SearchBox
+                  id="location"
+                  name="location"
+                  options={{ country: "FI", types: "address, street, place" }}
+                  value={values.location}
+                  accessToken={MAPBOX_TOKEN}
+                  onChange={(input) => {
+                    setFieldValue('location', input);
+                    setFieldValue('lat', null);
+                    setFieldValue('lon', null);
+                  }}
+                  onRetrieve={(data) => {
+                    setFieldValue('location', data.features[0].properties.full_address)
+                    setFieldValue('lat',  data.features[0].properties.coordinates.latitude)
+                    setFieldValue('lon',  data.features[0].properties.coordinates.longitude)
+                  }}
+                />
+                <ErrorMessage name="lat" component="div" className={styles.formError} />
               </div>
 
               <div className={styles.inputGroup}>
@@ -152,9 +177,9 @@ const CreateEventForm = () => {
                 <ErrorMessage name="description" component="div" className={styles.formError} />
               </div>
 
-              <div className={styles.checkboxRow}>
+              <div className="checkboxRow">
                 <Field id="isPublic" type="checkbox" name="is_public" />
-                <label className={styles.staticLabel} htmlFor="isPublic">Make this event public</label>
+                <label className="staticLabel" htmlFor="isPublic">Make this event public</label>
               </div>
 
               <button type="submit" disabled={loading} className="button button-gradient">
@@ -170,3 +195,4 @@ const CreateEventForm = () => {
 };
 
 export default CreateEventForm;
+
