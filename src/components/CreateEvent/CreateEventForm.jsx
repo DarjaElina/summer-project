@@ -21,12 +21,12 @@ const validationSchema = Yup.object().shape({
   image: Yup.mixed().required('Image is required'),
   lat: Yup.number()
     .required('Start typing to select a valid location from the list')
-    .min(60)
-    .max(65),
+    .min(59.5, 'Latitude must be within Finland')
+    .max(70.1, 'Latitude must be within Finland'),
   lon: Yup.number()
-    .required('')
-    .min(20)
-    .max(30)
+    .required('Start typing to select a valid location from the list')
+    .min(19, 'Longitude must be within Finland')
+    .max(32, 'Longitude must be within Finland')
 });
 
 const CreateEventForm = () => {

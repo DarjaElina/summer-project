@@ -7,8 +7,14 @@ import { useUpdateEvent } from "../../hooks/useUpdateEvent";
 import toast from "react-hot-toast";
 import DatePicker from "react-datepicker";
 import { SearchBox } from "@mapbox/search-js-react";
+import { formatInTimeZone } from 'date-fns-tz'
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
+
+const parseUTCDateFromDB = (dateStr) => {
+  const isoUTC = dateStr.replace(" ", "T") + "Z";
+  return new Date(isoUTC);
+}
 
 export default function EventCard({
   id,
@@ -20,16 +26,18 @@ export default function EventCard({
   emoji,
   is_public,
   weather,
+  lat,
+  lon
 }) {
-  const d = new Date(date);
-  const day = d.getDate();
-  const month = d.toLocaleString("en-US", { month: "long" });
-  const formattedDate = `${day} ${month}`;
+  const d = parseUTCDateFromDB(date);
+  const badgeDate = formatInTimeZone(d, 'Europe/Helsinki', 'd MMMM');
+  
+  const dateWithTime = formatInTimeZone(d, 'Europe/Helsinki' , 'd MMMM \'at\' HH:mm');
 
   const { deleteEvent, loading: loadingDelete } = useDeleteEvent();
   const { updateEvent, loading: loadingUpdate } = useUpdateEvent();
 
-  const initialEventObj = { title, description, location, date, image_url, is_public };
+  const initialEventObj = { title, description, location, date: new Date(parseUTCDateFromDB(date)), image_url, is_public, lat, lon };
   const [eventObj, setEventObj] = useState(initialEventObj);
   const [isEdit, setIsEdit] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -50,6 +58,8 @@ export default function EventCard({
       success: "Event successfully deleted!",
       error: "Oops! Something went wrong.",
     });
+
+    setShowMore(false);
   };
 
   const onInputEdit = (e) => {
@@ -75,7 +85,11 @@ export default function EventCard({
       }
       const fullEventData = {
         ...eventObj,
-      };
+        date: eventObj.date.toISOString().slice(0, 19).replace('T', ' ')
+      }
+
+      console.log(fullEventData.date)
+
 
       await updateEvent(id, fullEventData);
       toast.success("Event successfully updated!");
@@ -93,7 +107,7 @@ export default function EventCard({
       {image_url && (
         <div className={style["event-image"]}>
           <img src={image_url} alt={title} />
-          <div className={style["date-badge"]}>{formattedDate}</div>
+          <div className={style["date-badge"]}>{badgeDate}</div>
         </div>
       )}
 
@@ -207,7 +221,7 @@ export default function EventCard({
               {emoji} {title}
             </h2>
             <p>
-              📅 <strong>Date:</strong> {formattedDate}
+              📅 <strong>Date:</strong> {dateWithTime}
             </p>
             <p>
               📍<strong>Location:</strong> {location}
