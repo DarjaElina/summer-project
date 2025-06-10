@@ -22,10 +22,17 @@
   max-width: 100%;
 }
 
+
+
 .inputGroup {
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.inputGroup textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
 }
 
 .gradientCircle {
@@ -72,6 +79,12 @@
 
 .emojiTitleWrapper {
   display: flex;
+}
+
+.formError {
+  color: var(--error-color);
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
 }
 
 @media (max-width: 1024px) {

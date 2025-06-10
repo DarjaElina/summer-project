@@ -2,7 +2,6 @@ import api from "./axios";
 
 export const getAll = async () => {
   const response = await api.get("/events");
-  console.log(response.data.events);
   return response.data.events;
 };
 
@@ -30,8 +29,6 @@ export const remove = async (id) => {
 
 export const getPublic = async () => {
   const response = await api.get("/events/public");
-  console.log(response)
-  console.log("Public events:", response.data.events);
   return response.data.events;
 };
 
