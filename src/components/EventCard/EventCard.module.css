@@ -138,7 +138,7 @@
   display: block;
   font-size: 0.95rem;
   color: var(--text-color);
-  margin-bottom: 4px;
+  margin-bottom: 0.5rem;
   position: relative;
 }
 
@@ -177,4 +177,10 @@ input, textarea {
 .confirm-buttons button:last-child {
   background-color: #d1d5db; /* gray */
   color: black;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

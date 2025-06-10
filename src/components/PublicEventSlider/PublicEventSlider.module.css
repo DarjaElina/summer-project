@@ -51,12 +51,11 @@
   font-size: 1.1rem;
   font-weight: 500;
   padding-bottom: 4px;
-  transition: color 0.3s ease, font-size 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .a:hover {
   color: var(--primary-color);
-  font-size: 1.2rem;
   text-decoration: none;
 }
 
