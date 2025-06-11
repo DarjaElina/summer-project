@@ -9,6 +9,20 @@ export default function EventDetails() {
   const { id } = useParams();
   const { event, loading } = useEvent(id, true);
 
+  if (!event && !loading) {
+    return (
+      <div className={styles.notFoundContainer}>
+        <h2>Oops! 🎈</h2>
+        <p>We couldn’t find an event with this ID. It might have been removed or never existed.</p>
+        <p>
+          <a href="/events/public" className={styles.backLink}>
+            ← Back to Public Events
+          </a>
+        </p>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className={styles.loadingContainer}>

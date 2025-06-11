@@ -1,18 +1,26 @@
 
 import styles from "../Home/Home.module.css";
 import heroImage from "../../assets/h.JPG";
-import { Link } from "react-router-dom"; 
+import { Link, Navigate } from "react-router-dom"; 
 import { useEvents } from "../../context/EventContext";
 import PublicEventSlider from "../../components/PublicEventSlider/PublicEventSlider";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Home() {
   const {events: publicEvents, loading} = useEvents();
+  const { isAuthenticated } = useAuth();
   const stats = [
     { label: "Event Planned ", number: "850 +" },
     { label: "Client Satisfaction ", number: "98 %" },
     { label: "Client Served ", number: "150 +" },
     { number: 8, label: "Awards" },
   ];
+
+  if (isAuthenticated) {
+    if (isAuthenticated) {
+      return <Navigate to="/events" replace />;
+    }
+  }
   return (
     <div className={styles.container}>
       <section
@@ -58,8 +66,6 @@ export default function Home() {
           )}
         </div>
       </section>
-
-     
     </div>
   );
 }
