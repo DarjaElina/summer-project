@@ -4,6 +4,7 @@ import { useEvents } from "../../context/EventContext";
 import styles from "./EventList.module.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { FaRegCalendarMinus } from "react-icons/fa";
+import SearchBar from "../SearchBar/SearchBar";
 
 const API_KEY = "40850c8658af868d2f8d372ba505c430";
 
@@ -112,30 +113,15 @@ export default function EventList({ CardComponent = MemoizedEventCard }) {
 
   return (
     <div>
-      <div className={styles.search}>
-        <input
-          type="text"
-          placeholder="Search by title,location"
-          onChange={handleInput}
-          value={searchTerm}
+      <SearchBar
+          searchValue={searchTerm}
+          onSearchChange={handleInput}
+          selectValue={searchTermSelect}
+          onSelectChange={handleSelect}
         />
-        <select value={searchTermSelect} onChange={handleSelect}>
-          <option value="all">All</option>
-          <option value="general">General</option>
-          <option value="course">Course</option>
-          <option value="volunteering">Volunteering</option>
-          <option value="sports">Sports</option>
-          <option value="music">Music</option>
-          <option value="art and culture">Art and Culture</option>
-          <option value="food and drink">Food and Drink</option>
-          <option value="networking">Networking</option>
-          <option value="online">Online</option>
-          <option value="kids and family">Kids and Family</option>
-        </select>
-      </div>
       <div className={styles["events-container"]}>
         {filteredEvents.length === 0 ? (
-          <h1>No data found</h1>
+          <h1>No events found</h1>
         ) : (
           filteredEvents.map((event) => (
             <CardComponent

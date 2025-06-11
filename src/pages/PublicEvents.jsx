@@ -3,7 +3,7 @@ import PublicEventCard from "../components/PublicEventCard/PublicEventCard"
 
 const Events = () => {
   return (
-    <div>
+    <div className="eventsContainer">
       <EventList CardComponent={PublicEventCard}/>
     </div>
   )

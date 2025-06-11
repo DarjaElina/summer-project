@@ -5,13 +5,14 @@ import { Toaster } from "react-hot-toast";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 const Root = () => {
-
   return (
     <>
-      <ScrollToTop/>
-      <Header/>
+      <ScrollToTop />
+      <Header />
       <main>
-        <Outlet />
+        <div className="container">
+          <Outlet />
+        </div>
         <Toaster
           position="top-right"
           toastOptions={{
@@ -30,7 +31,7 @@ const Root = () => {
           }}
         />
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 };
