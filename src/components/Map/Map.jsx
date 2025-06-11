@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { useEvents } from "../../context/EventContext";
 import "leaflet/dist/leaflet.css";
+import { parseISO, format } from "date-fns";
 
 const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#6c63ff';
 
@@ -23,7 +24,6 @@ const createColoredIcon = (color) => {
 export default function Map() {
   const { events } = useEvents();
 
-  // Create the icon once with your theme color
   const coloredIcon = createColoredIcon(primaryColor);
 
   return (
@@ -44,7 +44,7 @@ export default function Map() {
             <br />
             📍 {event.location}
             <br />
-            📅 {event.date}
+            📅 {format(parseISO(event.date), "eeee, MMMM d 'at' HH:mm")}
             <br />
             📝 {event.description}
           </Popup>

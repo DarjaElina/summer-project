@@ -2,7 +2,7 @@ import EventList from "../components/EventList/EventList"
 
 const Events = () => {
   return (
-    <div>
+    <div className="eventsContainer">
       <EventList/>
     </div>
   )

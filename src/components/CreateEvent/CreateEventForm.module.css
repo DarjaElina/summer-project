@@ -6,20 +6,23 @@
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  background: var(--secondary-background-color);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
   flex-direction: row;
+  background-color: var(--secondary-background-color);
 }
 
 .form {
   gap: 1.6rem;
   margin: 0 auto;
   padding: 2rem;
-  background-color: var(--secondary-background-color);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   width: 400px;
   max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 
@@ -33,19 +36,6 @@
 .inputGroup textarea {
   padding: 0.5rem;
   border: 1px solid var(--border-color);
-}
-
-.gradientCircle {
-  position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: var(--hero-linear);
-  filter: blur(110px);
-  opacity: 0.7;
-  z-index: 0;
 }
 
 .formWrapper {
