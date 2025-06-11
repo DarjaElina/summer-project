@@ -38,7 +38,7 @@ export default function RegistrationForm({ id }) {
         required
         style={{ display: "block", margin: "0.5rem 0" }}
       />
-      <button type="submit">Attend</button>
+      <button className="button button-primary" type="submit">Attend</button>
     </form>
   );
 }
