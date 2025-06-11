@@ -21,7 +21,7 @@ export default function PublicEventCard({ title, location, date, image_url, emoj
       )}
       <div className={styles.content}>
         <h3 className={styles.title}>{emoji} {title}</h3>
-        <p className={styles.location}><strong>Location:</strong> {location}</p>
+        <p className={styles.location}>📍 <strong>Location:</strong> {location}</p>
          {weather && (
             <div className={styles["event-weather"]}>
               🌤️ <strong>Weather:</strong> {weather.temp}°C,{" "}

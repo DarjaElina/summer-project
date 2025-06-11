@@ -47,10 +47,11 @@
 }
 
 .fc .fc-button-primary:hover:not(:disabled) {
-  background-color: darken(var(--primary-color), 10%);
+  background-color: #4338ca;
   transform: scale(1.05);
   cursor: pointer;
 }
+
 
 .fc-button:disabled {
   background-color: #9ca3af;
@@ -118,6 +119,13 @@
   cursor: default;
 }
 
+.fc-header-toolbar {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .fc {
     padding: 1rem;
@@ -130,5 +138,40 @@
   .fc-event {
     font-size: 0.75rem;
     padding: 4px 6px;
+  }
+  .fc-header-toolbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fc-toolbar-chunk {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  .fc-toolbar-title {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fc-daygrid-day-number {
+    font-size: 0.85rem;
+    padding: 0.3rem;
+  }
+
+  .fc-event {
+    font-size: 0.7rem;
+    padding: 3px 5px;
+  }
+
+  .fc .fc-button-primary {
+    padding: 6px 10px;
+    font-size: 0.8rem;
   }
 }
