@@ -55,7 +55,7 @@ function Dropzone({ onFileSelect }) {
   return (
     <div className="container">
       <div {...getRootProps({ className: dropzoneClass })}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} id="image" />
         {!file ? (
           <p>Drag 'n' drop an image here, or click to select one</p>
         ) : (
