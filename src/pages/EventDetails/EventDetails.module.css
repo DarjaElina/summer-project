@@ -131,3 +131,52 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .metaBlock {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .image {
+    max-height: 300px;
+  }
+
+  .subheading {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .description {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .registrationSection {
+    padding: 1rem 0.5rem;
+  }
+
+  .notFoundContainer {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .loadingContainer {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 670px) {
+  .registrationSection {
+    padding: 0;
+  }
+}

@@ -1,7 +1,16 @@
-.container {
+:root {
+  --side-image-url: url("https://images.unsplash.com/photo-1730484962172-c7da7007a00b?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+:root[data-theme="dark"] {
+  --side-image-url: url("https://images.unsplash.com/photo-1528155124528-06c125d81e89?q=80&w=3089&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.createEventFormContainer {
   display: flex;
   min-height: 400px;
   max-width: 900px;
+  width: 100%;
   margin: 3rem auto;
   position: relative;
   border-radius: 24px;
@@ -12,11 +21,10 @@
 }
 
 .form {
-  gap: 1.6rem;
   margin: 0 auto;
   padding: 2rem;
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -24,8 +32,6 @@
   box-shadow: none;
   backdrop-filter: none;
 }
-
-
 
 .inputGroup {
   position: relative;
@@ -78,10 +84,16 @@
 }
 
 @media (max-width: 1024px) {
-  .container {
+  .createEventFormContainer {
     flex-direction: column;
     min-height: auto;
-    margin: 2rem 1rem;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 600px;
+    background-image: var(--side-image-url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .formWrapper {
@@ -94,25 +106,18 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 765px) {
   .form {
-    padding: 1.5rem;
+    padding: 1rem;
     width: 100%;
+    max-width: 400px;
   }
 
   .formWrapper {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .heading {
     font-size: 1.6rem;
-  }
-
-  .gradientCircle {
-    width: 300px;
-    height: 300px;
-    top: -100px;
-    left: -100px;
-    filter: blur(90px);
   }
 }
