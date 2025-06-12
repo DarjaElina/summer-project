@@ -100,18 +100,21 @@ const CreateEventForm = () => {
                     placeholder="Enter event title"
                     className={`${styles.titleInput} ${values.title ? 'filled' : ''}`}
                   />
-                  <Field as="select" name="emoji" className={styles.emojiDropdown}>
-                    <option value="🌐">🌐</option>
-                    <option value="🎉">🎉</option>
-                    <option value="🏃">🏃</option>
-                    <option value="🎨">🎨</option>
-                    <option value="🎵">🎵</option>
-                    <option value="🍲">🍲</option>
-                    <option value="📚">📚</option>
-                    <option value="👨‍👩‍👧">👨‍👩‍👧</option>
-                    <option value="🌍">🌍</option>
-                    <option value="🥳">🥳</option>
-                  </Field>
+                  <div>
+                    <label className={styles.staticLabel} htmlFor="emoji">Emoji</label>
+                    <Field as="select" name="emoji" id="emoji" className={styles.emojiDropdown}>
+                      <option value="🌐">🌐</option>
+                      <option value="🎉">🎉</option>
+                      <option value="🏃">🏃</option>
+                      <option value="🎨">🎨</option>
+                      <option value="🎵">🎵</option>
+                      <option value="🍲">🍲</option>
+                      <option value="📚">📚</option>
+                      <option value="👨‍👩‍👧">👨‍👩‍👧</option>
+                      <option value="🌍">🌍</option>
+                      <option value="🥳">🥳</option>
+                    </Field>
+                  </div>
                 </div>
                 <ErrorMessage name="title" component="div" className={styles.formError} />
               </div>
@@ -164,7 +167,9 @@ const CreateEventForm = () => {
                 <ErrorMessage name="type" component="div" className={styles.formError} />
               </div>
 
+              <label className={styles.staticLabel} htmlFor="image">Image ✱</label>
               <Dropzone
+                id="image"
                 key={dropzoneKey}
                 onFileSelect={(file) => setFieldValue('image', file)}
               />
