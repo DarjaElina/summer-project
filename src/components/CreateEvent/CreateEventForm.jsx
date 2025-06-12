@@ -79,8 +79,7 @@ const CreateEventForm = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.gradientCircle} />
+    <div className={styles.createEventFormContainer}>
       <div className={styles.formWrapper}>
         <h2 className={styles.heading}>Create a New Event</h2>
 

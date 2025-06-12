@@ -113,3 +113,38 @@
   opacity: 0.5;
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.05));
 }
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 30px 16px;
+    gap: 20px;
+  }
+
+  .footer h1 {
+    font-size: 2rem;
+  }
+
+  .footer p {
+    font-size: 15px;
+  }
+
+  .columns {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .column {
+    padding: 0;
+    text-align: left;
+    flex: none;
+  }
+
+  .column h4 {
+    font-size: 1.2rem;
+  }
+
+  .column ul li a {
+    font-size: 14px;
+  }
+}
