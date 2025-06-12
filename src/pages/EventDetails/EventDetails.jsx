@@ -5,6 +5,7 @@ import styles from "./EventDetails.module.css";
 import { FaCalendarAlt, FaMapMarkerAlt, FaAlignLeft } from "react-icons/fa";
 import ClipLoader from "react-spinners/ClipLoader";
 import { formatInTimeZone } from "date-fns-tz";
+import { parseUTCDateFromDB } from '../../utils/dateHelper';
 
 export default function EventDetails() {
   const { id } = useParams();
@@ -34,14 +35,16 @@ export default function EventDetails() {
     );
   }
 
-  const formattedDateTime = formatInTimeZone(event.date, 'Europe/Helsinki', "d MMMM 'at' HH:mm");
+  const d = parseUTCDateFromDB(event.date);
+
+  const dateWithTime = formatInTimeZone(d, 'Europe/Helsinki' , 'd MMMM \'at\' HH:mm');
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.heading}>{event.title}</h1>
         <div className={styles.metaBlock}>
-          <p className={styles.meta}><FaCalendarAlt /> {formattedDateTime}</p>
+          <p className={styles.meta}><FaCalendarAlt /> {dateWithTime}</p>
           <p className={styles.meta}><FaMapMarkerAlt /> {event.location}</p>
         </div>
       </div>

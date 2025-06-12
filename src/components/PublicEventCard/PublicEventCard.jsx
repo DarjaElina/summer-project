@@ -1,9 +1,10 @@
 import styles from './PublicEventCard.module.css';
 import { useNavigate } from "react-router-dom";
 import { formatInTimeZone } from 'date-fns-tz';
+import { parseUTCDateFromDB } from '../../utils/dateHelper';
 
 export default function PublicEventCard({ title, location, date, image_url, emoji, id, weather }) {
-  const d = new Date(date);
+  const d = parseUTCDateFromDB(date);
   const formattedDate = `${d.getDate()} ${d.toLocaleString("en-US", { month: "short" })}`;
   const dateWithTime = formatInTimeZone(d, 'Europe/Helsinki' , 'd MMMM \'at\' HH:mm');
   const navigate = useNavigate();

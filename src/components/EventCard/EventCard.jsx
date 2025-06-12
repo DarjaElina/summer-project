@@ -8,13 +8,10 @@ import toast from "react-hot-toast";
 import DatePicker from "react-datepicker";
 import { SearchBox } from "@mapbox/search-js-react";
 import { formatInTimeZone } from 'date-fns-tz'
+import { parseUTCDateFromDB } from '../../utils/dateHelper';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
-const parseUTCDateFromDB = (dateStr) => {
-  const isoUTC = dateStr.replace(" ", "T") + "Z";
-  return new Date(isoUTC);
-}
 
 export default function EventCard({
   id,
