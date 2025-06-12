@@ -14,6 +14,16 @@ body {
   position: relative;
   z-index: 1000;
 }
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  background: var(--hero-linear);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: pointer;
+}
 
 .header h2 {
   font-size: 1.8rem;
