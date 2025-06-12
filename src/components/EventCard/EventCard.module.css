@@ -171,12 +171,12 @@ input, textarea {
 }
 
 .confirm-buttons button:first-child {
-  background-color: #f87171; /* red */
+  background-color: #f87171;
   color: white;
 }
 
 .confirm-buttons button:last-child {
-  background-color: #d1d5db; /* gray */
+  background-color: #d1d5db;
   color: black;
 }
 

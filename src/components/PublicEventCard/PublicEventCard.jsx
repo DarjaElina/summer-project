@@ -27,7 +27,6 @@ export default function PublicEventCard({ title, location, date, image_url, emoj
             className={styles.image}
             width="800"
             height="533"
-            loading="lazy"
           />
           <div className={styles.badge}>{formattedDate}</div>
         </div>

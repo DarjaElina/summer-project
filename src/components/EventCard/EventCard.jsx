@@ -115,7 +115,6 @@ export default function EventCard({
             alt={title}
             width="800"
             height="533"
-            loading="lazy"
           />
           <div className={style["date-badge"]}>{badgeDate}</div>
         </div>
