@@ -5,7 +5,7 @@
   font-family: "Montserrat", sans-serif;
   position: relative;
   height: 90vh;
-  background-image: url("src/assets/h.jpg");
+  background-image: url('../../assets/h-1600w.webp');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -247,6 +247,14 @@ section p {
   }
 }
 
+@media (max-width: 600px) {
+  .hero {
+    background-image: url('../../assets/h-600w.webp');
+  }
+}
+
+
+
 @media (max-width: 480px) {
   .heroContent h1 {
     font-size: 1.5rem;
@@ -264,5 +272,17 @@ section p {
   .ctaButton {
     width: 100%;
     padding: 10px 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hero {
+    background-image: url("../../assets/h-1000w.webp");
+  }
+}
+
+@media (min-width: 1601px) {
+  .hero {
+    background-image: url("../../assets/h-2000w.webp");
   }
 }

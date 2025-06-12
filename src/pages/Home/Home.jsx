@@ -1,6 +1,6 @@
 
 import styles from "../Home/Home.module.css";
-import heroImage from "../../assets/h.JPG";
+// import heroImage from "../../assets/h.JPG";
 import { Link, Navigate } from "react-router-dom"; 
 import { useEvents } from "../../context/EventContext";
 import PublicEventSlider from "../../components/PublicEventSlider/PublicEventSlider";
@@ -25,7 +25,7 @@ export default function Home() {
     <div className={styles.container}>
       <section
         className={styles.hero}
-        style={{ backgroundImage: `url(${heroImage})` }}
+        // style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className={styles.heroContent}>
           <h1>Manage your events all year round</h1>
