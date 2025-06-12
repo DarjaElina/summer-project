@@ -22,7 +22,7 @@ export default function EventCard({
   description,
   location,
   date,
-  image_url,
+  image_url, 
   emoji,
   is_public,
   weather,
@@ -41,6 +41,7 @@ export default function EventCard({
   const [eventObj, setEventObj] = useState(initialEventObj);
   const [isEdit, setIsEdit] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const optimizedImageUrl = image_url.replace('/upload/', '/upload/w_600,f_auto,q_auto:eco/');
 
   const handleEdit = () => setIsEdit((prev) => !prev);
 
@@ -88,8 +89,6 @@ export default function EventCard({
         date: eventObj.date.toISOString().slice(0, 19).replace('T', ' ')
       }
 
-      console.log(fullEventData.date)
-
 
       await updateEvent(id, fullEventData);
       toast.success("Event successfully updated!");
@@ -106,7 +105,18 @@ export default function EventCard({
     <div className={style["event-card"]}>
       {image_url && (
         <div className={style["event-image"]}>
-          <img src={image_url} alt={title} />
+          <img
+            src={optimizedImageUrl}
+            srcSet={`
+              ${image_url.replace('/upload/', '/upload/w_400,f_auto,q_auto/')} 400w,
+              ${image_url.replace('/upload/', '/upload/w_800,f_auto,q_auto/')} 800w
+            `}
+            sizes="(max-width: 600px) 400px, 800px"
+            alt={title}
+            width="800"
+            height="533"
+            loading="lazy"
+          />
           <div className={style["date-badge"]}>{badgeDate}</div>
         </div>
       )}
