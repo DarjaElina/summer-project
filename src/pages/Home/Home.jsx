@@ -62,7 +62,7 @@ export default function Home() {
           ) : publicEvents.length === 0 ? (
             <p>No public events available.</p>
           ) : (
-            <PublicEventSlider events={publicEvents} />
+            <PublicEventSlider events={publicEvents.slice(0, 5)} />
           )}
         </div>
       </section>
