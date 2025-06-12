@@ -4,10 +4,12 @@ import RegistrationForm from "../../components/RegistrationForm/RegistrationForm
 import styles from "./EventDetails.module.css";
 import { FaCalendarAlt, FaMapMarkerAlt, FaAlignLeft } from "react-icons/fa";
 import ClipLoader from "react-spinners/ClipLoader";
+import { formatInTimeZone } from "date-fns-tz";
 
 export default function EventDetails() {
   const { id } = useParams();
   const { event, loading } = useEvent(id, true);
+ 
 
   if (!event && !loading) {
     return (
@@ -32,12 +34,14 @@ export default function EventDetails() {
     );
   }
 
+  const formattedDateTime = formatInTimeZone(event.date, 'Europe/Helsinki', "d MMMM 'at' HH:mm");
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.heading}>{event.title}</h1>
         <div className={styles.metaBlock}>
-          <p className={styles.meta}><FaCalendarAlt /> {new Date(event.date).toLocaleDateString()}</p>
+          <p className={styles.meta}><FaCalendarAlt /> {formattedDateTime}</p>
           <p className={styles.meta}><FaMapMarkerAlt /> {event.location}</p>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import styles from './PublicEventCard.module.css';
 import { useNavigate } from "react-router-dom";
+import { formatInTimeZone } from 'date-fns-tz';
 
 export default function PublicEventCard({ title, location, date, image_url, emoji, id, weather }) {
   const d = new Date(date);
   const formattedDate = `${d.getDate()} ${d.toLocaleString("en-US", { month: "short" })}`;
+  const dateWithTime = formatInTimeZone(d, 'Europe/Helsinki' , 'd MMMM \'at\' HH:mm');
   const navigate = useNavigate();
 
   const handleAttend = () => {
@@ -34,6 +36,7 @@ export default function PublicEventCard({ title, location, date, image_url, emoj
       <div className={styles.content}>
         <h3 className={styles.title}>{emoji} {title}</h3>
         <p className={styles.location}>📍 <strong>Location:</strong> {location}</p>
+        <p> 📅 <strong>Date:</strong> {dateWithTime}</p>
         {weather && (
           <div className={styles["event-weather"]}>
             🌤️ <strong>Weather:</strong> {weather.temp}°C,{" "}
